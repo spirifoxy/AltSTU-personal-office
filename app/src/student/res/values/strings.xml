@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AltSTU-personal-office</string>
+
+    <!-- Strings related to student -->
+
+    <string name="hello">Hello student</string>
+</resources>
