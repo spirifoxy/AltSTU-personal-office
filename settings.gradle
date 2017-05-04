@@ -1,5 +1,2 @@
 include ':app'
-include ':student'
 
-project(':student').projectDir = new File(settingsDir,
-        '../Student')
