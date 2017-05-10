@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tolichp.spirifoxy.altstu_personal_office.NewsActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="324dp"
+        android:layout_height="178dp"
+        android:text="Приказом ректора от 26 апреля 2017 года № Л-1252 со 2 по 26 мая 2017 года военная кафедра проводит прием заявлений от студентов, изъявивших желание пройти конкурсный отбор для допуска к обучению по программам подготовки солдат, сержантов запаса."
+        tools:layout_editor_absoluteY="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="354dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="325dp"
+        android:layout_height="223dp"
+        android:text="Региональный центр международного сотрудничества АлтГТУ им. И.И. Ползунова проводит государственное тестирование по русскому языку иностранных граждан и лиц без гражданства для получения гражданства РФ."
+        tools:layout_editor_absoluteY="207dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.508" />
+
+</android.support.constraint.ConstraintLayout>
