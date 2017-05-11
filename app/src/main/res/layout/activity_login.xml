@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +9,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.tolichp.spirifoxy.altstu_personal_office.LoginActivity">
+    tools:context="com.tolichp.spirifoxy.altstu_personal_office.LoginActivity"
+
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+
+    android:weightSum="1">
 
     <!-- Login progress -->
     <ProgressBar
@@ -19,10 +25,20 @@
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
 
+    <ImageView
+        android:id="@+id/imageview_logo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.62"
+        app:srcCompat="@drawable/altgtu"
+        android:contentDescription="@string/logo" />
+        <!--android:background="@android:color/transparent"-->
+
+
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="209dp">
 
         <LinearLayout
             android:id="@+id/email_login_form"
