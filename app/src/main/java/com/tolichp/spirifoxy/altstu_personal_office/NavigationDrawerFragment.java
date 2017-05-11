@@ -133,7 +133,7 @@ public class NavigationDrawerFragment extends Fragment {
         actionBar.setHomeButtonEnabled(true);
 
         // ActionBarDrawerToggle ties together the the proper interactions
-        // between the navigation drawer and the action bar app icon.
+        // between the navigation drawer and the action bar com.tolichp.spirifoxy.altstu_personal_office.app icon.
         mDrawerToggle = new ActionBarDrawerToggle(
                 getActivity(),                    /* host Activity */
                 mDrawerLayout,                    /* DrawerLayout object */
@@ -232,7 +232,7 @@ public class NavigationDrawerFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // If the drawer is open, show the global app actions in the action bar. See also
+        // If the drawer is open, show the global com.tolichp.spirifoxy.altstu_personal_office.app actions in the action bar. See also
         // showGlobalContextActionBar, which controls the top-left area of the action bar.
         if (mDrawerLayout != null && isDrawerOpen()) {
             inflater.inflate(R.menu.global, menu);
@@ -256,7 +256,7 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     /**
-     * Per the navigation drawer design guidelines, updates the action bar to show the global app
+     * Per the navigation drawer design guidelines, updates the action bar to show the global com.tolichp.spirifoxy.altstu_personal_office.app
      * 'context', rather than just what's in the current screen.
      */
     private void showGlobalContextActionBar() {
