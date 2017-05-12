@@ -7,8 +7,16 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.tolichp.spirifoxy.altstu_personal_office.volley.LruBitmapCache;
 
-import volley.LruBitmapCache;
+//import com.android.volley.Request;
+//import com.android.volley.RequestQueue;
+//import com.android.volley.toolbox.ImageLoader;
+//import com.android.volley.toolbox.Volley;
+
+//import volley.LruBitmapCache;
+//import com.android.volley.toolbox.*;
+
 
 public class AppController extends Application {
 

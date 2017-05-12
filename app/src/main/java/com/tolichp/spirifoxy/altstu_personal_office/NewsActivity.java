@@ -24,7 +24,8 @@ import java.util.List;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.FeedListAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.app.AppController;
-import data.FeedItem;
+import com.tolichp.spirifoxy.altstu_personal_office.data.FeedItem;
+
 
 public class NewsActivity extends Activity {
     private static final String TAG = NewsActivity.class.getSimpleName();

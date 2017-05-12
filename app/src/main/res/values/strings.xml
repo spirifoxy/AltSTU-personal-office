@@ -15,6 +15,20 @@
     </string>
 
     <string name="hello">Hello</string>
+    <!--<string name="title_activity_login_activitytest">Sign in</string>-->
+
+    <string name="mon">пн</string>
+    <string name="tue">вт</string>
+    <string name="wed">ср</string>
+    <string name="thu">чт</string>
+    <string name="fri">пт</string>
+    <string name="sat">сб</string>
+    <string name="sun">вс</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logo">Логотип</string>
+
+
     <string name="title_activity_login_activitytest">Sign in</string>
     <string name="title_activity_menu">MenuActivity</string>
 

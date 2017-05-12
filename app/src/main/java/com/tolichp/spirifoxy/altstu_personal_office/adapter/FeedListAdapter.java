@@ -17,10 +17,10 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.tolichp.spirifoxy.altstu_personal_office.FeedImageView;
 import com.tolichp.spirifoxy.altstu_personal_office.R;
 import com.tolichp.spirifoxy.altstu_personal_office.app.AppController;
+import com.tolichp.spirifoxy.altstu_personal_office.data.FeedItem;
 
 import java.util.List;
 
-import data.FeedItem;
 
 public class FeedListAdapter extends BaseAdapter {
     private Activity activity;

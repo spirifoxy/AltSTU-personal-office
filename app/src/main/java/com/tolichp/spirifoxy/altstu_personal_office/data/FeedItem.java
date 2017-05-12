@@ -1,4 +1,4 @@
-package data;
+package com.tolichp.spirifoxy.altstu_personal_office.data;
 
 public class FeedItem {
     private int id;
