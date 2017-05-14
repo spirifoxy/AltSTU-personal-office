@@ -9,14 +9,7 @@
     <color name="colorAccent">#757575</color>
 
 
-    <!--<color name="colorPrimaryLight">#ffffff</color>-->
-
-    <!--<color name="secondary">#757575</color>-->
-    <!--<color name="secondaryLight">#a4a4a4</color>-->
-    <!--<color name="secondaryDark">#494949</color>-->
-    <!--<color name="colorAccent">#FF4081</color>-->
-
-
+    <!--Colors for news-->
     <color name="white">#ffffff</color>
     <color name="feed_bg">#d3d6db</color>
     <color name="feed_item_bg">#ffffff</color>

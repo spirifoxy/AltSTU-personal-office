@@ -3,7 +3,6 @@ package com.tolichp.spirifoxy.altstu_personal_office;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.ListView;
 
 import com.android.volley.Cache;
@@ -13,6 +12,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.tolichp.spirifoxy.altstu_personal_office.adapter.FeedListAdapter;
+import com.tolichp.spirifoxy.altstu_personal_office.app.AppController;
+import com.tolichp.spirifoxy.altstu_personal_office.data.FeedItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,11 +23,6 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.tolichp.spirifoxy.altstu_personal_office.adapter.FeedListAdapter;
-import com.tolichp.spirifoxy.altstu_personal_office.app.AppController;
-import com.tolichp.spirifoxy.altstu_personal_office.data.FeedItem;
-
 
 public class NewsActivity extends Activity {
     private static final String TAG = NewsActivity.class.getSimpleName();
@@ -47,12 +44,6 @@ public class NewsActivity extends Activity {
         listAdapter = new FeedListAdapter(this, feedItems);
         listView.setAdapter(listAdapter);
 
-        // These two lines not needed,
-        // just to get the look of facebook (changing background color & hiding the icon)
-        /*getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3b5998")));
-        getActionBar().setIcon(
-                new ColorDrawable(getResources().getColor(android.R.color.transparent)));
-*/
         // We first check for cached request
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
         Entry entry = cache.get(URL_FEED);
@@ -131,11 +122,4 @@ public class NewsActivity extends Activity {
             e.printStackTrace();
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
 }

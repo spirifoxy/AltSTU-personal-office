@@ -47,9 +47,6 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".TimetableActivity" />
 
-        <activity
-            android:name=".MenuActivity"
-            android:label="@string/title_activity_menu" />
     </application>
 
 </manifest>
