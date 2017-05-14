@@ -1,9 +1,8 @@
-package com.tolichp.spirifoxy.altstu_personal_office.model;
+package com.tolichp.spirifoxy.altstu_personal_office.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
@@ -23,10 +22,64 @@ public class Lesson implements Parcelable {
     public Lesson() {
         startTime = Calendar.getInstance();
         endTime = Calendar.getInstance();
-        title = "";
+        /*title = "";
         audience = "";
         classType = "";
-        info = "";
+        info = "";*/
+
+        title = "testtitle testtitle testtitle testtitle testtitletesttitle testtitle testtitle testtitle testtitle testtitle testtitletesttitle testtitletesttitletesttitle";
+        audience = "testaud";
+        classType = "testclass";
+        info = "testinfo";
+
+    }
+
+    public Calendar getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Calendar startTime) {
+        this.startTime = startTime;
+    }
+
+    public Calendar getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Calendar endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAudience() {
+        return audience;
+    }
+
+    public void setAudience(String audience) {
+        this.audience = audience;
+    }
+
+    public String getClassType() {
+        return classType;
+    }
+
+    public void setClassType(String classType) {
+        this.classType = classType;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 
     private Lesson(Parcel in) {
@@ -39,6 +92,7 @@ public class Lesson implements Parcelable {
         String tzIdEndTime = in.readString();
         endTime = new GregorianCalendar(TimeZone.getTimeZone(tzIdEndTime));
         endTime.setTimeInMillis(msEndTime);
+
 
         title = in.readString();
         audience = in.readString();

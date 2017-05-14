@@ -10,6 +10,18 @@
 
 
     <!--Colors for news-->
+
+    <color name="colorRedTest">#0f0</color>
+
+
+    <!--<color name="colorPrimaryLight">#ffffff</color>-->
+
+    <!--<color name="secondary">#757575</color>-->
+    <!--<color name="secondaryLight">#a4a4a4</color>-->
+    <!--<color name="secondaryDark">#494949</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+
     <color name="white">#ffffff</color>
     <color name="feed_bg">#d3d6db</color>
     <color name="feed_item_bg">#ffffff</color>
@@ -17,4 +29,16 @@
     <color name="link">#0a80d1</color>
     <color name="timestamp">#a0a3a7</color>
 
+
+
+    <color name="black">#000000</color>
+    <color name="black_light">#99444444</color>
+    <color name="gray_dark">#616161</color>
+    <color name="gray_light">#9e9e9e</color>
+    <color name="brown">#5d4037</color>
+
+    <color name="indicator_1">#F44336</color>
+    <color name="indicator_2">#9C27B0</color>
+    <color name="indicator_3">#00BCD4</color>
+    <color name="indicator_4">#2196F3</color>
 </resources>

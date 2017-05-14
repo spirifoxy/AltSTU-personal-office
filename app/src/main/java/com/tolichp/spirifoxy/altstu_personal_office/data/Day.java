@@ -1,12 +1,9 @@
-package com.tolichp.spirifoxy.altstu_personal_office.model;
+package com.tolichp.spirifoxy.altstu_personal_office.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by spirifoxy on 11.05.2017.
@@ -14,18 +11,22 @@ import java.util.List;
 
 public class Day implements Parcelable {//Serializable {
     private String name;
-    private String shortName;
     private ArrayList<Lesson> lessons;
 
-    public Day(String name) {
+    public int testNumber;//TODO delete
+
+    public Day(String name, int testNumber) {
         this.name = name;
-        shortName = "";
         lessons = new ArrayList<>();
+
+
+        this.testNumber = testNumber;
+        lessons.add(new Lesson()); //TODO test data, delete it
     }
 
     private Day(Parcel in) {
         name = in.readString();
-        shortName = in.readString();
+        //shortName = in.readString();
         lessons = in.createTypedArrayList(Lesson.CREATOR);
     }
 
@@ -49,13 +50,6 @@ public class Day implements Parcelable {//Serializable {
         this.name = name;
     }
 
-    /*public String getShortName() {
-        return shortName;
-    }
-
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
-    }*/
 
     public ArrayList<Lesson> getLessons() {
         return lessons;
@@ -69,7 +63,7 @@ public class Day implements Parcelable {//Serializable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeString(shortName);
+        //dest.writeString(shortName);
         dest.writeTypedList(lessons);
     }
 

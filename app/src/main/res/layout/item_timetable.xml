@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#0Ff">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteY="8dp"
+        android:background="#000"
+        android:layout_marginLeft="@dimen/feed_item_margin"
+        android:layout_marginRight="@dimen/feed_item_margin"
+        android:layout_marginTop="@dimen/feed_item_margin">
 
         <RelativeLayout
             android:layout_width="60dp"
@@ -23,7 +28,8 @@
                 android:layout_alignParentTop="true"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/text_big" />
+                android:textSize="@dimen/text_big"
+                android:background="#f00"/>
 
             <TextView
                 android:id="@+id/textview_end_time"
@@ -33,7 +39,8 @@
                 android:layout_alignParentStart="true"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/text_big" />
+                android:textSize="@dimen/text_big"
+                android:background="#f00"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -44,16 +51,16 @@
             <TextView
                 android:id="@+id/textview_title"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:gravity="start|center_vertical"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/text_normal" />
+                android:textSize="@dimen/text_normal"
+                android:background="#00F"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <TextView
@@ -61,18 +68,20 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="start|center_vertical"
                     android:textAlignment="viewStart"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/text_normal" />
+
+                <!--
+                android:gravity="end|center_vertical"
+                -->
 
                 <TextView
                     android:id="@+id/textview_classtype"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="end|center_vertical"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="viewEnd"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/text_normal" />
             </LinearLayout>
@@ -80,11 +89,10 @@
             <TextView
                 android:id="@+id/textview_info"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:gravity="start|center_vertical"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/text_normal" />
+                android:textSize="@dimen/text_normal" android:background="#00F"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

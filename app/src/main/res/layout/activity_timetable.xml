@@ -8,18 +8,72 @@
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="368dp"
-        android:layout_height="495dp"
-        android:layout_marginRight="8dp"
+    <github.chenupt.springindicator.SpringIndicator
+        android:id="@+id/indicator"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:siIndicatorColor="@color/colorPrimary"
+        app:siIndicatorColors="@array/indicator_colors"
+        app:siSelectedTextColor="@android:color/white"
+        app:siTextColor="@color/colorPrimaryDark"
+        app:siTextSize="18sp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indicator"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp">
-    </android.support.v4.view.ViewPager>
+        android:layout_marginBottom="0dp">
+
+        <!--<android.support.design.widget.TabLayout
+        android:id="@+id/sliding_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMaxWidth="0dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed" />-->
+
+        <github.chenupt.springindicator.viewpager.ScrollerViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:background="@color/colorRedTest" />
+
+
+        <!--    <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="368dp"
+                android:layout_height="495dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp">
+
+               &lt;!&ndash; <android.support.v4.view.PagerTabStrip
+                    android:id="@+id/pager_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="4dp" />&ndash;&gt;
+
+            </android.support.v4.view.ViewPager>-->
+
+
+    </FrameLayout>
 
 
 </android.support.constraint.ConstraintLayout>
