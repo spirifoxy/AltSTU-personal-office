@@ -1,11 +1,7 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
-import android.content.Intent;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
@@ -13,12 +9,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.WeekFragmentPagerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Day;
 
+import java.text.DateFormat;
 import java.text.DateFormatSymbols;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import github.chenupt.springindicator.SpringIndicator;
 import github.chenupt.springindicator.viewpager.ScrollerViewPager;
@@ -58,6 +65,10 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
             }
         });
 
+        int currentWeekNumber = getCurrentWeekNumber();
+
+
+
         //инициализация дней
         ArrayList<Day> days = null; // TODO not initialized
         //TODO test and debug
@@ -70,19 +81,13 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
         }
 
         for (Day day : days) {
-            //TimetableFragment timetableFragment = new TimetableFragment(day);
             TimetableFragment timetableFragment = TimetableFragment.newInstance(day);
-            //timetableFragment.setCurrentPage
             fragmentsList.add(timetableFragment);
         }
 
         String[] titlesList = getResources().getStringArray(R.array.week_days_short);
         weekPagerAdapter = new WeekFragmentPagerAdapter(getSupportFragmentManager(),fragmentsList, titlesList);
 
-        /*TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-        tabLayout.setupWithViewPager(pager);*/
-
-        //PagerAdapter adapter = new PageAdapter(getSupportFragmentManager());
         viewPager.setAdapter(weekPagerAdapter);
         viewPager.fixScrollSpeed();
 
@@ -105,42 +110,46 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.week_menu_layout, menu);
+        MenuItem item = menu.findItem(R.id.spinner);
+        Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
+        SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(getSupportActionBar()
+                .getThemedContext(), R.array.week_numbers, android.R.layout.simple_spinner_dropdown_item); //  create the adapter from a StringArray
 
-
-
-
-    /*private String[] getTitles(){
-
-        return new String[]{"page1", "page2", "page3", "page4"};
+        spinner.setAdapter(mSpinnerAdapter); // set the adapter to provide layout of rows and content
+        //spinner.setOnItemSelectedListener(onItemSelectedListener); // set the listener, to perform actions based on item selection
+        return true;
     }
 
-    private Integer[] getBgRes(){
-        return new Integer[] {R.drawable.altgtu, R.drawable.altgtu111, R.drawable.altgtu_test};//{R.drawable.bg1, R.drawable.bg2, R.drawable.bg3, R.drawable.bg4};
-    }*/
 
-    /*class PageAdapter extends FragmentPagerAdapter {
+    private int getCurrentWeekNumber() {
+        Locale locale = new Locale("ru","RU");
+        TimeZone tz = TimeZone.getTimeZone("Asia/Barnaul");
+        Calendar cal = GregorianCalendar.getInstance(tz, locale);
+        Date currentDate = new Date();
+        cal.setTime(currentDate);
 
-        public PageAdapter(FragmentManager fm) {
-            super(fm);
+        int week = cal.get(Calendar.WEEK_OF_YEAR);
+        int year = cal.get(Calendar.YEAR);
+
+        Date firstSemDate = null;
+        Date secondSemDate = null;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", locale);
+        try {firstSemDate = sdf.parse(getResources().getString(R.string.first_sep) + "-" + year);
+            secondSemDate = sdf.parse(getResources().getString(R.string.first_feb) + "-" + year);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
-        @Override
-        public Fragment getItem(int position) {
-            GuideFragment  fragment = new GuideFragment ();
-            Bundle args = new Bundle();
-            args.putInt("data",getBgRes()[position]);
-            fragment.setArguments(args);
-            return fragment;
+        Calendar semBegin = GregorianCalendar.getInstance(tz, locale);
+        if (currentDate.after(firstSemDate) && currentDate.before(secondSemDate)) { //первый семестр
+            semBegin.setTime(firstSemDate);
+        } else {
+            semBegin.setTime(secondSemDate);
         }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return getTitles()[position];
-        }
-    }*/
+        return week - semBegin.get(Calendar.WEEK_OF_YEAR) + 1;
+    }
 }

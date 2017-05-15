@@ -9,18 +9,15 @@ import java.util.ArrayList;
  * Created by spirifoxy on 11.05.2017.
  */
 
-public class Day implements Parcelable {//Serializable {
+public class Day implements Parcelable {
     private String name;
     private ArrayList<Lesson> lessons;
 
-    public int testNumber;//TODO delete
 
     public Day(String name, int testNumber) {
         this.name = name;
         lessons = new ArrayList<>();
 
-
-        this.testNumber = testNumber;
         lessons.add(new Lesson()); //TODO test data, delete it
     }
 

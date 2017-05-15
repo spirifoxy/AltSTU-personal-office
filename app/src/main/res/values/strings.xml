@@ -27,6 +27,16 @@
     <string name="sat">сб</string>
     <string name="sun">вс</string>
 
+    <string name="week_one">Неделя 1</string>
+    <string name="week_two">Неделя 2</string>
+
+    <string name="first_sep">01-09</string>
+    <string name="first_feb">"01-02</string>
+
+    <string name="spinner">Spinner</string>
+
+
+
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logo">Логотип</string>

@@ -16,4 +16,9 @@
         <item>@string/sat</item>
         <item>@string/sun</item>
     </string-array>
+
+    <string-array name="week_numbers">
+        <item>@string/week_one</item>
+        <item>@string/week_two</item>
+    </string-array>
 </resources>
