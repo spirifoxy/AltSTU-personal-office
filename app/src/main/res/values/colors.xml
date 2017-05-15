@@ -41,4 +41,7 @@
     <color name="indicator_2">#9C27B0</color>
     <color name="indicator_3">#00BCD4</color>
     <color name="indicator_4">#2196F3</color>
+    <color name="indicator_5">#74eac5</color>
+    <color name="indicator_6">#dce775</color>
+    <color name="indicator_7">#ff9e80</color>
 </resources>
