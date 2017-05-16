@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.TimetableRecyclerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Day;
@@ -73,7 +72,7 @@ public class TimetableFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_timetable, null);
+        View view = inflater.inflate(R.layout.fragment_timetable, container, false);
 
         /*TextView tvPage = (TextView) view.findViewById(R.id.textview_page);
         tvPage.setText("Page " + pageName);//pageNumber);*/
@@ -89,9 +88,9 @@ public class TimetableFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mRecyclerView = (RecyclerView) getView().findViewById(R.id.view_recycler);
+        mRecyclerView = (RecyclerView) getView().findViewById(R.id.view_recycler_timetable);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator()); //TODO test please
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         //TODO какую-нибудь проверку на то, есть ли элементы в списке?
 

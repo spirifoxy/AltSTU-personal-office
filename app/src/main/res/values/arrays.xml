@@ -5,6 +5,9 @@
         <item>@color/indicator_2</item>
         <item>@color/indicator_3</item>
         <item>@color/indicator_4</item>
+        <item>@color/indicator_5</item>
+        <item>@color/indicator_6</item>
+        <item>@color/indicator_7</item>
     </array>
 
     <string-array name="week_days_short">

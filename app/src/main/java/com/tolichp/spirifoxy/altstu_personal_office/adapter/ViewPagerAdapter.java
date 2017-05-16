@@ -13,12 +13,12 @@ import com.tolichp.spirifoxy.altstu_personal_office.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeekFragmentPagerAdapter extends FragmentPagerAdapter { //PagerAdapter {//FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private ArrayList<Fragment> fragmentsList;
     private String[] titlesList;
 
-    public WeekFragmentPagerAdapter (FragmentManager fm,ArrayList<Fragment> fragmentsList, String[] titlesList) { //(FragmentManager fm, ArrayList<Fragment> fragmentsList) {
+    public ViewPagerAdapter(FragmentManager fm, ArrayList<Fragment> fragmentsList, String[] titlesList) {
         super(fm);
         this.fragmentsList = fragmentsList;
         this.titlesList = titlesList;
