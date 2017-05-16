@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        android:layout_marginLeft="@dimen/feed_item_margin"
+        android:layout_marginRight="@dimen/feed_item_margin"
+        android:layout_marginTop="@dimen/feed_item_margin"
+        android:background="@drawable/border_ttitem_set"
+        android:paddingBottom="@dimen/item_border"
+        android:paddingTop="@dimen/item_border">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_toStartOf="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/textview_subjectname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@color/block_light"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:text="@string/attestation"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:text="@string/attestation_help"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:background="@color/block_light" >
+
+                <TextView
+                    android:id="@+id/textview_audience"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_normal" />
+
+                <!--
+                android:gravity="end|center_vertical"
+                -->
+
+                <TextView
+                    android:id="@+id/textview_classtype"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_normal" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/padding_big"
+            android:id="@+id/linearLayout">
+
+            <ImageView
+                android:id="@+id/imageview_showmore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                app:srcCompat="@android:drawable/ic_menu_slideshow" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
