@@ -1,9 +1,11 @@
 package com.tolichp.spirifoxy.altstu_personal_office.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tolichp.spirifoxy.altstu_personal_office.R;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 public class StudyprogressRecyclerAdapter extends RecyclerView.Adapter<StudyprogressRecyclerAdapter.ViewHolder> {
 
     private ArrayList<Subject> subjectsList = new ArrayList<>(); //TODO подумать, где инициализировать
+    static final String TAG = "myLogs";
 
     public StudyprogressRecyclerAdapter(ArrayList<Subject> subjectsList) {
         this.subjectsList = subjectsList;
@@ -38,6 +41,7 @@ public class StudyprogressRecyclerAdapter extends RecyclerView.Adapter<Studyprog
         ViewHolder(View itemView) {
             super(itemView);
             mItemView = itemView;
+//            mRelativeLayoutShowmore = (RelativeLayout) itemView.findViewById(R.id.layout_re);
             mTextViewSubjectName = (TextView) itemView.findViewById(R.id.textview_subjectname);
         }
     }
@@ -47,9 +51,17 @@ public class StudyprogressRecyclerAdapter extends RecyclerView.Adapter<Studyprog
         Subject subject = subjectsList.get(position);
         holder.mTextViewSubjectName.setText(subject.getName());
 
-        if(holder.itemView != null) {
-            holder.itemView.setLayoutParams(
+
+
+        if(holder.mItemView != null) {
+            holder.mItemView.setLayoutParams(
                     new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            holder.mItemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d(TAG, "rl click");
+                }
+            });
         }
     }
 

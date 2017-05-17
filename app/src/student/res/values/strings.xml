@@ -2,6 +2,13 @@
     <string name="app_name">AltSTU-personal-office</string>
 
     <!-- Strings related to student -->
-
     <string name="hello">Hello student</string>
+
+
+    <!-- Strings related to studyprogress -->
+    <string name="attestation">Аттестация/посещаемость</string>
+    <string name="attestation_help">(аттестация/посещаемость)</string>
+    <string name="attestation_empty">- / -</string>
+
+
 </resources>

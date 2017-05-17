@@ -1,19 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+        <!--<application>-->
+        <!--<activity-->
+            <!--android:name="com.tolichp.spirifoxy.altstu_personal_office.SubjectFragment"-->
+            <!--android:label="@string/app_name">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-    <application>
-        <activity
-            android:name="com.tolichp.spirifoxy.altstu_personal_office.StudyprogressActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
-
-
-    <!--<application>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--&lt;!&ndash;<activity android:name="com.tolichp.spirifoxy.altstu_personal_office.SubjectFragment"></activity>&ndash;&gt;-->
+    <!--</application>-->
+    <!--
+<application>
         <activity android:name="com.tolichp.spirifoxy.altstu_personal_office.StudyprogressActivity"></activity>
-    </application>-->
+    </application>
+    -->
+
+
 </manifest>
