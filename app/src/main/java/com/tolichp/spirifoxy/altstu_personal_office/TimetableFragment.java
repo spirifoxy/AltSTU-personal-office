@@ -39,7 +39,7 @@ public class TimetableFragment extends Fragment {
     private PagerAdapter pagerAdapter; //TODO убрать? мб сразу созданный объект слать куда там надо
 
 
-    public static TimetableFragment newInstance(String param1, String param2) {
+    public static TimetableFragment newInstance() {//String param1, String param2) {
         TimetableFragment fragment = new TimetableFragment();
 //        Bundle args = new Bundle();
 //        fragment.setArguments(args);
@@ -99,7 +99,7 @@ public class TimetableFragment extends Fragment {
         }
 
         String[] titlesList = getResources().getStringArray(R.array.week_days_short);
-        pagerAdapter = new ViewPagerAdapter(getFragmentManager(), fragmentsList, titlesList);
+        pagerAdapter = new ViewPagerAdapter(getChildFragmentManager(), fragmentsList, titlesList);
 
         viewPager.setAdapter(pagerAdapter);
         viewPager.fixScrollSpeed();
@@ -107,20 +107,7 @@ public class TimetableFragment extends Fragment {
 
         final SpringIndicator springIndicator = (SpringIndicator) view.findViewById(R.id.indicator);
         springIndicator.setViewPager(viewPager);
-        springIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-            }
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
 
         return view;
     }
