@@ -41,7 +41,6 @@
     <string name="attestation_help">(аттестация/посещаемость)</string>
 
 
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logo">Логотип</string>
 
@@ -62,7 +61,8 @@
 
     <string name="messages">сообщения</string>
     <string name="notifications">оповещения</string>
-<!--
+    <string name="title_activity_navigation_menu">NavigationMenuActivity</string>
+    <!--
 
 
     <string name="hello_world">Hello world!</string>

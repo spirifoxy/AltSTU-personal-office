@@ -1,13 +1,28 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tolichp.spirifoxy.altstu_personal_office.TimetableFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.tolichp.spirifoxy.altstu_personal_office.TimetableFragment"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/view_recycler_timetable"
+    <github.chenupt.springindicator.SpringIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:siIndicatorColor="@color/colorPrimary"
+        app:siIndicatorColors="@array/indicator_colors"
+        app:siSelectedTextColor="@android:color/white"
+        app:siTextColor="@color/colorPrimaryDark"
+        app:siTextSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <github.chenupt.springindicator.viewpager.ScrollerViewPager
+        android:id="@+id/view_pager_timetable"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none" />
-
-</FrameLayout>
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp" />
+</LinearLayout>

@@ -6,42 +6,29 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!--android:theme="@style/AppTheme.NoActionBar"-->
-
+    <!-- android:theme="@style/AppTheme.NoActionBar" -->
     <application
-        android:name="com.tolichp.spirifoxy.altstu_personal_office.app.AppController"
+        android:name=".app.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
         <activity
-            android:name=".NewsActivity"
-            android:label="@string/app_name">
+            android:name=".NavigationMenuActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!--<activity
-            android:name=".TimetableActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>-->
         <activity android:name=".LoginActivity" />
-        <activity android:name=".TimetableActivity" />
-
+        <activity android:name=".NewsActivity" />
     </application>
 
 </manifest>

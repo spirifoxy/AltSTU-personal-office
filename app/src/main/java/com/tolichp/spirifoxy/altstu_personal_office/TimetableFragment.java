@@ -1,72 +1,58 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
-
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tolichp.spirifoxy.altstu_personal_office.adapter.TimetableRecyclerAdapter;
+import com.tolichp.spirifoxy.altstu_personal_office.adapter.ViewPagerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Day;
-import com.tolichp.spirifoxy.altstu_personal_office.data.Lesson;
 
+import java.text.DateFormatSymbols;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
+
+import github.chenupt.springindicator.SpringIndicator;
+import github.chenupt.springindicator.viewpager.ScrollerViewPager;
 
 public class TimetableFragment extends Fragment {
 
+    /* public TimetableFragment() {
+         // Required empty public constructor
+     }*/
+    static final String TAG = "myLogs";
 
-//    static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
-    static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
-    static final String ARGUMENT_PAGE_NAME = "arg_page_name";
-    static final String ARGUMENT_LESSONS = "arg_lessons";
+    //    private ViewPager pager;
+    private ScrollerViewPager viewPager;
 
-    //int pageNumber;
-    //int backColor;
-
-    private RecyclerView mRecyclerView;
-
-    private TimetableRecyclerAdapter mTimetableAdapter;
-
-    //TODO rename?
-    private String pageName;
-    private ArrayList<Lesson> lessons;
+    private ArrayList<Fragment> fragmentsList;
+    private PagerAdapter pagerAdapter; //TODO убрать? мб сразу созданный объект слать куда там надо
 
 
-
-
-
-//    static TimetableFragment newInstance(String pageName, ArrayList<Lesson> lessons) { //int page) {
-    static TimetableFragment newInstance(Day day) { //int page) {
-        TimetableFragment timeTableFragment = new TimetableFragment();
-        Bundle arguments = new Bundle();
-//        arguments.putInt(ARGUMENT_PAGE_NUMBER, day);
-
-        //test
-        //arguments.putInt("data", R.drawable.altgtu);//getBgRes()[day.testNumber]);
-        //test
-
-
-
-        arguments.putString(ARGUMENT_PAGE_NAME, day.getName());
-        arguments.putParcelableArrayList(ARGUMENT_LESSONS, day.getLessons());
-        timeTableFragment.setArguments(arguments);
-        return timeTableFragment;
+    public static TimetableFragment newInstance(String param1, String param2) {
+        TimetableFragment fragment = new TimetableFragment();
+//        Bundle args = new Bundle();
+//        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        pageNumber = getArguments().getInt(ARGUMENT_PAGE_NUMBER);
-        pageName = getArguments().getString(ARGUMENT_PAGE_NAME);
-        lessons = getArguments().getParcelableArrayList(ARGUMENT_LESSONS);
-
-        //Random rnd = new Random();
-        //backColor = Color.argb(40, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        /*if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }*/
     }
 
     @Override
@@ -74,26 +60,99 @@ public class TimetableFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
 
-        /*TextView tvPage = (TextView) view.findViewById(R.id.textview_page);
-        tvPage.setText("Page " + pageName);//pageNumber);*/
-        //tvPage.setBackgroundColor(backColor);
+
+        fragmentsList = new ArrayList<>();
+
+        viewPager = (ScrollerViewPager) view.findViewById(R.id.view_pager_timetable);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                //TODO ???
+                Log.d(TAG, "onPageSelected, position = " + position);
+            }
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                Log.d(TAG, "onPageScrolled, position = " + position);
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                Log.d(TAG, "onPageScrollStateChanged, state = " + state);
+            }
+        });
+
+        //int currentWeekNumber = getCurrentWeekNumber();
+
+        //инициализация дней
+        ArrayList<Day> days = null; // TODO not initialized
+        //TODO test and debug
+        if (null == days) {
+            days = new ArrayList<>();
+            String[] weekDays = DateFormatSymbols.getInstance().getWeekdays();
+            for (int i = 0; i < weekDays.length-1; i++) {
+                days.add(new Day(weekDays[i+1], i));
+            }
+        }
+
+        for (Day day : days) {
+            TimetableDayFragment timetableFragment = TimetableDayFragment.newInstance(day);
+            fragmentsList.add(timetableFragment);
+        }
+
+        String[] titlesList = getResources().getStringArray(R.array.week_days_short);
+        pagerAdapter = new ViewPagerAdapter(getFragmentManager(), fragmentsList, titlesList);
+
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.fixScrollSpeed();
+
+
+        final SpringIndicator springIndicator = (SpringIndicator) view.findViewById(R.id.indicator);
+        springIndicator.setViewPager(viewPager);
+        springIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mRecyclerView = (RecyclerView) getView().findViewById(R.id.view_recycler_timetable);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        //TODO какую-нибудь проверку на то, есть ли элементы в списке?
+    private int getCurrentWeekNumber() {
+        Locale locale = new Locale("ru","RU");
+        TimeZone tz = TimeZone.getTimeZone("Asia/Barnaul");
+        Calendar cal = GregorianCalendar.getInstance(tz, locale);
+        Date currentDate = new Date();
+        cal.setTime(currentDate);
 
-        mTimetableAdapter = new TimetableRecyclerAdapter(lessons);
-        mRecyclerView.setAdapter(mTimetableAdapter);
+        int week = cal.get(Calendar.WEEK_OF_YEAR);
+        int year = cal.get(Calendar.YEAR);
 
-        mRecyclerView.setVisibility(View.VISIBLE);
+        Date firstSemDate = null;
+        Date secondSemDate = null;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", locale);
+        try {firstSemDate = sdf.parse(getResources().getString(R.string.first_sep) + "-" + year);
+            secondSemDate = sdf.parse(getResources().getString(R.string.first_feb) + "-" + year);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar semBegin = GregorianCalendar.getInstance(tz, locale);
+        if (currentDate.after(firstSemDate) && currentDate.before(secondSemDate)) { //первый семестр
+            semBegin.setTime(firstSemDate);
+        } else {
+            semBegin.setTime(secondSemDate);
+        }
+        return week - semBegin.get(Calendar.WEEK_OF_YEAR) + 1;
     }
 
 }
