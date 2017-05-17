@@ -1,7 +1,6 @@
 package com.tolichp.spirifoxy.altstu_personal_office.adapter;
 
-import android.app.Activity;
-import android.content.Context;
+        import android.app.Activity;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
@@ -13,7 +12,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
 import com.tolichp.spirifoxy.altstu_personal_office.FeedImageView;
 import com.tolichp.spirifoxy.altstu_personal_office.R;
 import com.tolichp.spirifoxy.altstu_personal_office.app.AppController;
@@ -28,8 +26,7 @@ public class FeedListAdapter extends BaseAdapter {
     private List<FeedItem> feedItems;
     ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
-    public FeedListAdapter(Activity activity, List<FeedItem> feedItems) {
-        this.activity = activity;
+    public  FeedListAdapter(List<FeedItem> feedItems) {
         this.feedItems = feedItems;
     }
 
@@ -51,11 +48,12 @@ public class FeedListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if (inflater == null)
-            inflater = (LayoutInflater) activity
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        if (inflater == null)
+//            inflater = (LayoutInflater) activity
+//                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.feed_item, null);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_item, null);
+//        convertView = inflater.inflate(R.layout.feed_item, null);
 
         if (imageLoader == null)
             imageLoader = AppController.getInstance().getImageLoader();
@@ -66,8 +64,8 @@ public class FeedListAdapter extends BaseAdapter {
         TextView statusMsg = (TextView) convertView
                 .findViewById(R.id.txtStatusMsg);
         TextView url = (TextView) convertView.findViewById(R.id.txtUrl);
-        NetworkImageView profilePic = (NetworkImageView) convertView
-                .findViewById(R.id.profilePic);
+//        NetworkImageView profilePic = (NetworkImageView) convertView
+//                .findViewById(R.id.profilePic);
         FeedImageView feedImageView = (FeedImageView) convertView
                 .findViewById(R.id.feedImage1);
 
@@ -104,7 +102,7 @@ public class FeedListAdapter extends BaseAdapter {
         }
 
         // user profile pic
-        profilePic.setImageUrl(item.getProfilePic(), imageLoader);
+//        profilePic.setImageUrl(item.getProfilePic(), imageLoader);
 
         // Feed image
         if (item.getImge() != null) {
