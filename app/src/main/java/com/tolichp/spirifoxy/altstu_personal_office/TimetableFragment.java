@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.TimetableRecyclerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Day;
@@ -77,10 +76,6 @@ public class TimetableFragment extends Fragment {
 
         /*TextView tvPage = (TextView) view.findViewById(R.id.textview_page);
         tvPage.setText("Page " + pageName);//pageNumber);*/
-
-
-
-
         //tvPage.setBackgroundColor(backColor);
 
         return view;
@@ -97,9 +92,6 @@ public class TimetableFragment extends Fragment {
 
         mTimetableAdapter = new TimetableRecyclerAdapter(lessons);
         mRecyclerView.setAdapter(mTimetableAdapter);
-
-
-
 
         mRecyclerView.setVisibility(View.VISIBLE);
     }

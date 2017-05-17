@@ -7,12 +7,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
-public class WeekFragmentPagerAdapter extends FragmentPagerAdapter { //PagerAdapter {//FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter { //PagerAdapter {//FragmentPagerAdapter {
 
     private ArrayList<Fragment> fragmentsList;
     private String[] titlesList;
 
-    public WeekFragmentPagerAdapter (FragmentManager fm,ArrayList<Fragment> fragmentsList, String[] titlesList) { //(FragmentManager fm, ArrayList<Fragment> fragmentsList) {
+    public ViewPagerAdapter(FragmentManager fm, ArrayList<Fragment> fragmentsList, String[] titlesList) { //(FragmentManager fm, ArrayList<Fragment> fragmentsList) {
         super(fm);
         this.fragmentsList = fragmentsList;
         this.titlesList = titlesList;

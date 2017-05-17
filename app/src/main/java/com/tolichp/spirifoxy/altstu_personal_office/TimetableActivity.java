@@ -13,10 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
-import com.tolichp.spirifoxy.altstu_personal_office.adapter.WeekFragmentPagerAdapter;
+import com.tolichp.spirifoxy.altstu_personal_office.adapter.ViewPagerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Day;
 
-import java.text.DateFormat;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,7 +38,6 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
 
     private ArrayList<Fragment> fragmentsList;
     private PagerAdapter weekPagerAdapter; //TODO убрать? мб сразу созданный объект слать куда там надо
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +63,6 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
             }
         });
 
-        int currentWeekNumber = getCurrentWeekNumber();
-
-
-
         //инициализация дней
         ArrayList<Day> days = null; // TODO not initialized
         //TODO test and debug
@@ -86,11 +80,10 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
         }
 
         String[] titlesList = getResources().getStringArray(R.array.week_days_short);
-        weekPagerAdapter = new WeekFragmentPagerAdapter(getSupportFragmentManager(),fragmentsList, titlesList);
+        weekPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),fragmentsList, titlesList);
 
         viewPager.setAdapter(weekPagerAdapter);
         viewPager.fixScrollSpeed();
-
 
         final SpringIndicator springIndicator = (SpringIndicator) findViewById(R.id.indicator);
         springIndicator.setViewPager(viewPager);
@@ -122,7 +115,6 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
         //spinner.setOnItemSelectedListener(onItemSelectedListener); // set the listener, to perform actions based on item selection
         return true;
     }
-
 
     private int getCurrentWeekNumber() {
         Locale locale = new Locale("ru","RU");
