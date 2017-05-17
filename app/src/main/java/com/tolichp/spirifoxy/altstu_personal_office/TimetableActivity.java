@@ -1,17 +1,11 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.ViewPagerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Day;
@@ -29,7 +23,7 @@ import java.util.TimeZone;
 import github.chenupt.springindicator.SpringIndicator;
 import github.chenupt.springindicator.viewpager.ScrollerViewPager;
 
-public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//AppCompatActivity {
+public class TimetableActivity extends AppCompatActivity {
 
     static final String TAG = "myLogs";
 
@@ -39,6 +33,7 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
     private ArrayList<Fragment> fragmentsList;
     private PagerAdapter weekPagerAdapter; //TODO убрать? мб сразу созданный объект слать куда там надо
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +41,7 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
 
         fragmentsList = new ArrayList<>();
 
-        viewPager = (ScrollerViewPager) findViewById(R.id.view_pager);
+        viewPager = (ScrollerViewPager) findViewById(R.id.view_pager_timetable);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -62,6 +57,10 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
                 Log.d(TAG, "onPageScrollStateChanged, state = " + state);
             }
         });
+
+        int currentWeekNumber = getCurrentWeekNumber();
+
+
 
         //инициализация дней
         ArrayList<Day> days = null; // TODO not initialized
@@ -80,7 +79,7 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
         }
 
         String[] titlesList = getResources().getStringArray(R.array.week_days_short);
-        weekPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),fragmentsList, titlesList);
+        weekPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), fragmentsList, titlesList);
 
         viewPager.setAdapter(weekPagerAdapter);
         viewPager.fixScrollSpeed();
@@ -101,19 +100,6 @@ public class TimetableActivity extends AppCompatActivity {//FragmentActivity {//
 
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.week_menu_layout, menu);
-        MenuItem item = menu.findItem(R.id.spinner);
-        Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
-        SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(getSupportActionBar()
-                .getThemedContext(), R.array.week_numbers, android.R.layout.simple_spinner_dropdown_item); //  create the adapter from a StringArray
-
-        spinner.setAdapter(mSpinnerAdapter); // set the adapter to provide layout of rows and content
-        //spinner.setOnItemSelectedListener(onItemSelectedListener); // set the listener, to perform actions based on item selection
-        return true;
     }
 
     private int getCurrentWeekNumber() {

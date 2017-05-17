@@ -43,12 +43,11 @@
         app:tabMode="fixed" />-->
 
         <github.chenupt.springindicator.viewpager.ScrollerViewPager
-            android:id="@+id/view_pager"
+            android:id="@+id/view_pager_timetable"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="0dp"
-            android:background="@color/colorRedTest" />
+            android:layout_marginTop="0dp" />
 
 
         <!--    <android.support.v4.view.ViewPager

@@ -36,6 +36,10 @@
     <string name="spinner">Spinner</string>
 
 
+    <!-- Strings related to studyprogress -->
+    <string name="attestation">Аттестация</string>
+    <string name="attestation_help">(аттестация/посещаемость)</string>
+
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
