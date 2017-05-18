@@ -12,8 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.tolichp.spirifoxy.altstu_personal_office.FeedImageView;
-import com.tolichp.spirifoxy.altstu_personal_office.R;
+        import com.tolichp.spirifoxy.altstu_personal_office.R;
 import com.tolichp.spirifoxy.altstu_personal_office.app.AppController;
 import com.tolichp.spirifoxy.altstu_personal_office.data.FeedItem;
 
@@ -48,12 +47,10 @@ public class FeedListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-//        if (inflater == null)
-//            inflater = (LayoutInflater) activity
-//                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         if (convertView == null)
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.feed_item, null);
-//        convertView = inflater.inflate(R.layout.feed_item, null);
+
 
         if (imageLoader == null)
             imageLoader = AppController.getInstance().getImageLoader();
@@ -64,10 +61,9 @@ public class FeedListAdapter extends BaseAdapter {
         TextView statusMsg = (TextView) convertView
                 .findViewById(R.id.txtStatusMsg);
         TextView url = (TextView) convertView.findViewById(R.id.txtUrl);
-//        NetworkImageView profilePic = (NetworkImageView) convertView
-//                .findViewById(R.id.profilePic);
-        FeedImageView feedImageView = (FeedImageView) convertView
-                .findViewById(R.id.feedImage1);
+
+//        FeedImageView feedImageView = (FeedImageView) convertView
+//                .findViewById(R.id.feedImage1);
 
         FeedItem item = feedItems.get(position);
 
@@ -105,22 +101,22 @@ public class FeedListAdapter extends BaseAdapter {
 //        profilePic.setImageUrl(item.getProfilePic(), imageLoader);
 
         // Feed image
-        if (item.getImge() != null) {
-            feedImageView.setImageUrl(item.getImge(), imageLoader);
-            feedImageView.setVisibility(View.VISIBLE);
-            feedImageView
-                    .setResponseObserver(new FeedImageView.ResponseObserver() {
-                        @Override
-                        public void onError() {
-                        }
-
-                        @Override
-                        public void onSuccess() {
-                        }
-                    });
-        } else {
-            feedImageView.setVisibility(View.GONE);
-        }
+//        if (item.getImge() != null) {
+//            feedImageView.setImageUrl(item.getImge(), imageLoader);
+//            feedImageView.setVisibility(View.VISIBLE);
+//            feedImageView
+//                    .setResponseObserver(new FeedImageView.ResponseObserver() {
+//                        @Override
+//                        public void onError() {
+//                        }
+//
+//                        @Override
+//                        public void onSuccess() {
+//                        }
+//                    });
+//        } else {
+//            feedImageView.setVisibility(View.GONE);
+//        }
 
         return convertView;
     }
