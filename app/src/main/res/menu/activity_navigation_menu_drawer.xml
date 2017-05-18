@@ -15,6 +15,11 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Аттестация" />
 
+        <item
+            android:id="@+id/nav_test"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="test" />
+
     </group>
 
     <!--<item android:title="Communicate">-->

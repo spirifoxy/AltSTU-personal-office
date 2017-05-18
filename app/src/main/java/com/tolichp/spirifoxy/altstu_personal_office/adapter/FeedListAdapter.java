@@ -1,6 +1,6 @@
 package com.tolichp.spirifoxy.altstu_personal_office.adapter;
 
-        import android.app.Activity;
+import android.app.Activity;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
@@ -12,7 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
-        import com.tolichp.spirifoxy.altstu_personal_office.R;
+import com.tolichp.spirifoxy.altstu_personal_office.R;
 import com.tolichp.spirifoxy.altstu_personal_office.app.AppController;
 import com.tolichp.spirifoxy.altstu_personal_office.data.FeedItem;
 

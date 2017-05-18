@@ -1,9 +1,11 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
+import android.app.ActionBar;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
@@ -29,6 +31,39 @@ public class SubjectFragment extends Fragment {
 
 
     }*/
+
+    public static SubjectFragment newInstance() {//String param1, String param2) {
+        SubjectFragment fragment = new SubjectFragment();
+//        Bundle args = new Bundle();
+//        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setHasOptionsMenu(true);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        /*if (id == R.id.action_settings) {
+            return true;
+        }  else */if (id == R.id.home) {
+            getActivity().getSupportFragmentManager().popBackStack();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Nullable
     @Override
@@ -114,6 +149,10 @@ public class SubjectFragment extends Fragment {
         expandableListView.setAdapter(adapter);
 
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        /*ActionBar actionBar = getActivity().getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);*/
+        setHasOptionsMenu(true);
+
+        return view;//super.onCreateView(inflater, container, savedInstanceState);
     }
 }

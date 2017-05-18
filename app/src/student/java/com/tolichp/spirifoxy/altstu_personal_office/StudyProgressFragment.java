@@ -2,6 +2,8 @@ package com.tolichp.spirifoxy.altstu_personal_office;
 
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tolichp.spirifoxy.altstu_personal_office.adapter.StudyprogressRecyclerAdapter;
+import com.tolichp.spirifoxy.altstu_personal_office.adapter.StudyProgressRecyclerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Subject;
 
 import java.util.ArrayList;
@@ -20,8 +22,6 @@ public class StudyProgressFragment extends android.support.v4.app.Fragment {
     private ArrayList<Fragment> fragmentsList;
     private PagerAdapter weekPagerAdapter;*/
 
-    private RecyclerView mRecyclerView;
-    private StudyprogressRecyclerAdapter mTStudyprogressAdapter;
 
     public static StudyProgressFragment newInstance() {//String param1, String param2) {
         StudyProgressFragment fragment = new StudyProgressFragment();
@@ -40,31 +40,18 @@ public class StudyProgressFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        setContentView(R.layout.fragment_studyprogress);
+        //        setContentView(R.layout.fragment_studyprogress);
         View view = inflater.inflate(R.layout.fragment_studyprogress, container, false);
 
-        /*Fragment sf  = new SubjectFragment();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.content_studyprogress, sf);
-        ft.addToBackStack(null);
-        ft.commit();*/
 
+        Fragment fragment = SubjectsListFragment.newInstance();
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.view_recycler_studyprogress);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
-        ArrayList<Subject> subjects = new ArrayList<>();
-        for (int i = 0; i< 13; i++) {
-            subjects.add(new Subject("test subject " + i ));
-
-        }
-
-        //TODO какую-нибудь проверку на то, есть ли элементы в списке?
-        mTStudyprogressAdapter = new StudyprogressRecyclerAdapter(subjects);
-        mRecyclerView.setAdapter(mTStudyprogressAdapter);
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_studyprogress, fragment);
+        transaction.commit();
 
         return view;
+
+
     }
 }

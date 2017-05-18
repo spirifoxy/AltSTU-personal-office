@@ -1,8 +1,12 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,9 +15,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public class NavigationMenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener {
+
+    private ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,24 +30,86 @@ public class NavigationMenuActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
-        toggle.syncState();
+
+        toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getSupportFragmentManager().getBackStackEntryCount()>0) {
+                    Toast.makeText(v.getContext(), "Back", Toast.LENGTH_LONG).show();
+                    getSupportFragmentManager().popBackStack();
+                    return;
+                }
+
+                toggle.setDrawerIndicatorEnabled(true);
+
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                } else {
+                    drawer.openDrawer(GravityCompat.START);
+                }
+            }
+        });
+
+//        toggle.syncState();
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        toggle.syncState();
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        toggle.setDrawerIndicatorEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+/*    public void shouldDisplayHomeUp(){
+        //Enable Up button only  if there are entries in the back stack
+        boolean canback = getSupportFragmentManager().getBackStackEntryCount()>0;
+        *//*getSupportActionBar().setDisplayHomeAsUpEnabled(canback);
+        getSupportActionBar().setDisplayShowHomeEnabled(canback);
+
+        toggle.setHomeAsUpIndicator(R.drawable.ic_drawer);
+        toggle.setDrawerIndicatorEnabled(false);*//*
+
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        toggle.setDrawerIndicatorEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        toggle.setDrawerIndicatorEnabled(canback);
+
+        //getSupportActionBar().setDisplayShowHomeEnabled(canback);
+        *//*toggle.setHomeAsUpIndicator(R.drawable.ic_drawer);
+        toggle.setDrawerIndicatorEnabled(true);*//*
+    }*/
+
+/*    @Override
+    public boolean onSupportNavigateUp() {
+        //This method is called when the up button is pressed. Just the pop back stack.
+        getSupportFragmentManager().popBackStack();
+        return true;
+    }*/
+
+
+
+
+
+
 
     @Override
     public void onBackPressed() {
@@ -53,13 +123,13 @@ public class NavigationMenuActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -68,7 +138,10 @@ public class NavigationMenuActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }
+        }  /*else if (id == R.id.home) {
+            getSupportFragmentManager().popBackStack();
+            return true;
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -99,9 +172,17 @@ public class NavigationMenuActivity extends AppCompatActivity
 //
 //        } else if (id == R.id.nav_send) {
 //
-        }
+        } else if (id == R.id.nav_test) {
+            fragment = SubjectFragment.newInstance();
+        }/* else if (id == android.R.id.home) {
+            getSupportFragmentManager().popBackStack();
+            return true;
+        }*/
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        FragmentManager fm = getSupportFragmentManager();
+        fm.addOnBackStackChangedListener(this);
+        FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.content_frame, fragment);
         transaction.commit();
 
@@ -109,4 +190,5 @@ public class NavigationMenuActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
