@@ -40,6 +40,9 @@
     <string name="attestation">Аттестация</string>
     <string name="attestation_help">(аттестация/посещаемость)</string>
 
+    <string name="exam">Экзамен</string>
+    <string name="credit">Зачёт</string>
+    <string name="points">75 (отлично)</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logo">Логотип</string>
@@ -61,6 +64,16 @@
 
     <string name="messages">сообщения</string>
     <string name="notifications">оповещения</string>
+
+    <string name="semester1">Семестр 1</string>
+    <string name="semester2">Семестр 2</string>
+    <string name="semester3">Семестр 3</string>
+    <string name="semester4">Семестр 4</string>
+    <string name="semester5">Семестр 5</string>
+    <string name="semester6">Семестр 6</string>
+    <string name="semester7">Семестр 7</string>
+    <string name="semester8">Семестр 8</string>
+
     <string name="title_activity_navigation_menu">NavigationMenuActivity</string>
     <!--
 

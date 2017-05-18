@@ -40,8 +40,6 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
 //        setContentView(R.layout.fragment_news);
         View view = inflater.inflate(R.layout.fragment_news, container, false);
-//        listView = (ListView) findViewById(R.id.list);
-//        viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         viewPager = (ViewPager) view.findViewById(R.id.pager);
         fragmentsList = new ArrayList<>();
@@ -54,13 +52,11 @@ public class NewsFragment extends Fragment {
         feedItems = new ArrayList<>();
 
         String[] titlesList = getResources().getStringArray(R.array.info_titles);
-//        listAdapter = new ViewPagerAdapter(getSupportFragmentManager(),fragmentsList, titlesList);
         listAdapter = new ViewPagerAdapter(getChildFragmentManager(), fragmentsList, titlesList);
         viewPager.setAdapter(listAdapter);
 
         return view;
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
