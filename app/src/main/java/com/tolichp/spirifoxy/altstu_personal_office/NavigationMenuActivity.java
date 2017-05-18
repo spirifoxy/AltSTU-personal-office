@@ -93,8 +93,8 @@ public class NavigationMenuActivity extends AppCompatActivity
             fragment = NewsFragment.newInstance();
         } else if (id == R.id.nav_slideshow) {
             fragment = StudyProgressFragment.newInstance();
-//        } else if (id == R.id.nav_manage) {
-//
+        } else if (id == R.id.nav_manage) {
+            fragment = SessionsFragment.newInstance();
 //        } else if (id == R.id.nav_share) {
 //
 //        } else if (id == R.id.nav_send) {
