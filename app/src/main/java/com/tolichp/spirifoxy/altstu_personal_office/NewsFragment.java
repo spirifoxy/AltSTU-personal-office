@@ -28,6 +28,13 @@ public class NewsFragment extends Fragment {
 
     @SuppressLint("NewApi")
 
+    public static NewsFragment newInstance() {//String param1, String param2) {
+        NewsFragment fragment = new NewsFragment();
+//        Bundle args = new Bundle();
+//        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

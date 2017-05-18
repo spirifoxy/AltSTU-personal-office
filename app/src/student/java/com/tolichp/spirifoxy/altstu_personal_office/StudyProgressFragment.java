@@ -1,27 +1,20 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.view.ViewGroup;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.StudyprogressRecyclerAdapter;
-import com.tolichp.spirifoxy.altstu_personal_office.adapter.TimetableRecyclerAdapter;
-import com.tolichp.spirifoxy.altstu_personal_office.adapter.ViewPagerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Subject;
 
 import java.util.ArrayList;
 
-import github.chenupt.springindicator.viewpager.ScrollerViewPager;
-
-public class StudyprogressActivity extends AppCompatActivity {
+public class StudyProgressFragment extends android.support.v4.app.Fragment {
 
     /*private ScrollerViewPager viewPager;
     private ArrayList<Fragment> fragmentsList;
@@ -30,12 +23,25 @@ public class StudyprogressActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private StudyprogressRecyclerAdapter mTStudyprogressAdapter;
 
+    public static StudyProgressFragment newInstance() {//String param1, String param2) {
+        StudyProgressFragment fragment = new StudyProgressFragment();
+//        Bundle args = new Bundle();
+//        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_studyprogress);
+    }
 
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+//        setContentView(R.layout.fragment_studyprogress);
+        View view = inflater.inflate(R.layout.fragment_studyprogress, container, false);
 
         /*Fragment sf  = new SubjectFragment();
         FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -44,8 +50,8 @@ public class StudyprogressActivity extends AppCompatActivity {
         ft.commit();*/
 
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.view_recycler_studyprogress);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.view_recycler_studyprogress);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
@@ -55,11 +61,10 @@ public class StudyprogressActivity extends AppCompatActivity {
 
         }
 
-
         //TODO какую-нибудь проверку на то, есть ли элементы в списке?
         mTStudyprogressAdapter = new StudyprogressRecyclerAdapter(subjects);
         mRecyclerView.setAdapter(mTStudyprogressAdapter);
 
-
+        return view;
     }
 }

@@ -90,15 +90,15 @@ public class NavigationMenuActivity extends AppCompatActivity
         if (id == R.id.nav_timetable) {
             fragment = TimetableFragment.newInstance();
         } else if (id == R.id.nav_messages) {
-            fragment = new NewsFragment();
+            fragment = NewsFragment.newInstance();
         } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            fragment = StudyProgressFragment.newInstance();
+//        } else if (id == R.id.nav_manage) {
+//
+//        } else if (id == R.id.nav_share) {
+//
+//        } else if (id == R.id.nav_send) {
+//
         }
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
