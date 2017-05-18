@@ -29,7 +29,7 @@ import java.util.List;
 
 
 public class NewsMessagesFragment extends Fragment {
-        private static final String TAG = NewsActivity.class.getSimpleName();
+        private static final String TAG = NewsFragment.class.getSimpleName();
         private ListView listView;
         private FeedListAdapter listAdapter;
         private List<FeedItem> feedItems;
@@ -41,7 +41,7 @@ public class NewsMessagesFragment extends Fragment {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-//            setContentView(R.layout.activity_news);
+//            setContentView(R.layout.fragment_news);
             View view = inflater.inflate(R.layout.fragment_news_messages, null);
             listView = (ListView) view.findViewById(R.id.list);
 
@@ -89,7 +89,7 @@ public class NewsMessagesFragment extends Fragment {
                 AppController.getInstance().addToRequestQueue(jsonReq);
             }
 
-//        return (R.layout.activity_news);
+//        return (R.layout.fragment_news);
         return view;
         }
 

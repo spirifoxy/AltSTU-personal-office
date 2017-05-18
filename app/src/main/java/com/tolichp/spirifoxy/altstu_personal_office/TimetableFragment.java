@@ -60,7 +60,6 @@ public class TimetableFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
 
-
         fragmentsList = new ArrayList<>();
 
         viewPager = (ScrollerViewPager) view.findViewById(R.id.view_pager_timetable);

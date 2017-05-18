@@ -1,8 +1,9 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -77,27 +78,32 @@ public class NavigationMenuActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        TimetableFragment fragment = TimetableFragment.newInstance();
-//        TimetableFragment fragment = new TimetableFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        Fragment fragment = null;
+////        TimetableFragment fragment = TimetableFragment.newInstance();
+////        NewsFragment fragment = new NewsFragment();
+////        TimetableFragment fragment = new TimetableFragment();
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+////        transaction.replace(R.id.content_frame, fragment);
 //        transaction.replace(R.id.content_frame, fragment);
+//        transaction.commit();
+
+        if (id == R.id.nav_timetable) {
+            fragment = TimetableFragment.newInstance();
+        } else if (id == R.id.nav_messages) {
+            fragment = new NewsFragment();
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, fragment);
         transaction.commit();
-//
-//        if (id == R.id.nav_camera) {
-//            // Handle the camera action
-//        } else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
-//
-//        } else if (id == R.id.nav_manage) {
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
