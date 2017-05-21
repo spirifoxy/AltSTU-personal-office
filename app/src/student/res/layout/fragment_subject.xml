@@ -22,7 +22,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/annotation"
-            android:textSize="@dimen/text_normal"
+            android:textSize="@dimen/text_medium2"
             android:textStyle="bold" />
         <!--<LinearLayout
             android:layout_width="fill_parent"
@@ -53,7 +53,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/ilias"
-            android:textSize="@dimen/text_normal"
+            android:textSize="@dimen/text_medium2"
             android:textStyle="bold" />
 
         <TextView

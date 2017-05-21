@@ -6,5 +6,9 @@
             android:id="@+id/nav_messages_t"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/messages" />
+        <item
+            android:id="@+id/nav_attendance"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/attendance" />
     </group>
 </menu>

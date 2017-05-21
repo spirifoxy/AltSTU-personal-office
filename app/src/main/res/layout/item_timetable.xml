@@ -32,7 +32,7 @@
                 android:layout_alignParentTop="true"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_big"
+                android:textSize="@dimen/text_medium3"
                 android:background="@color/white"/>
 
             <TextView
@@ -43,7 +43,7 @@
                 android:layout_alignParentStart="true"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_big"
+                android:textSize="@dimen/text_medium3"
                 android:background="@color/white"/>
         </RelativeLayout>
 
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_normal"
+                android:textSize="@dimen/text_medium2"
                 android:background="@color/block_light"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"/>
@@ -78,7 +78,7 @@
                     android:layout_weight="1"
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_normal" />
+                    android:textSize="@dimen/text_medium2" />
 
                 <TextView
                     android:id="@+id/textview_classtype"
@@ -87,7 +87,7 @@
                     android:layout_weight="1"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_normal" />
+                    android:textSize="@dimen/text_medium2" />
             </LinearLayout>
             <TextView
                 android:id="@+id/textview_info"
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_normal"
+                android:textSize="@dimen/text_medium2"
                 android:background="@color/block_light"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"/>
