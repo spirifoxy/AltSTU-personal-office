@@ -1,13 +1,30 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class TeacherMessages extends AppCompatActivity {
+public class TeacherMessages extends Fragment {
+
+    public static TeacherMessages newInstance() {
+        TeacherMessages fragment = new TeacherMessages();
+        return fragment;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_messages);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_teacher_messages, container, false);
+
+        return view;
     }
 }

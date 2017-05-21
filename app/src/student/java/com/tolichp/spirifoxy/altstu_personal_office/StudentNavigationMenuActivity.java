@@ -26,7 +26,7 @@ public class StudentNavigationMenuActivity extends NavigationMenuActivity {
 
         if (id == R.id.nav_timetable) {
             fragment = TimetableFragment.newInstance();
-        } else if (id == R.id.nav_messages) {
+        } else if (id == R.id.nav_messages_st) {
             fragment = NewsFragment.newInstance();
         } else if (id == R.id.nav_slideshow) {
             fragment = StudyProgressFragment.newInstance();

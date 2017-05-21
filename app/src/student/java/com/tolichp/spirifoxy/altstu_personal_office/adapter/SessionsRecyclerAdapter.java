@@ -23,12 +23,6 @@ public class SessionsRecyclerAdapter extends RecyclerView.Adapter<SessionsRecycl
 
     public SessionsRecyclerAdapter(ArrayList<Subject> subjectsList) {
         this.subjectsList = subjectsList;
-
-        // TODO ошибка - выше присваивается null
-        /*this.subjectsList = new ArrayList<>();
-        this.subjectsList.add(new Lesson());
-        this.subjectsList.add(new Lesson());
-        this.subjectsList.add(new Lesson());*/
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -38,7 +32,6 @@ public class SessionsRecyclerAdapter extends RecyclerView.Adapter<SessionsRecycl
         ViewHolder(View itemView) {
             super(itemView);
             mItemView = itemView;
-//            mRelativeLayoutShowmore = (RelativeLayout) itemView.findViewById(R.id.layout_re);
             mTextViewSubjectName = (TextView) itemView.findViewById(R.id.textview_subjectname);
         }
     }
@@ -48,17 +41,9 @@ public class SessionsRecyclerAdapter extends RecyclerView.Adapter<SessionsRecycl
         Subject subject = subjectsList.get(position);
         holder.mTextViewSubjectName.setText(subject.getName());
 
-
-
         if(holder.mItemView != null) {
             holder.mItemView.setLayoutParams(
                     new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            holder.mItemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.d(TAG, "rl click");
-                }
-            });
         }
     }
 
