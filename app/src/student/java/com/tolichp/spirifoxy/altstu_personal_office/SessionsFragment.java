@@ -42,12 +42,12 @@ public class SessionsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_sessions, container, false);
 
-        viewPager = (ViewPager) view.findViewById(R.id.pager2);
+        viewPager = (ViewPager) view.findViewById(R.id.pager_sessions);
         fragmentsList = new ArrayList<>();
         for (int i = 0; i < 8; i++)
             fragmentsList.add(new SessionsSemFragment());
 
-        PagerTabStrip pagerTabStrip = (PagerTabStrip) view.findViewById(R.id.pager_header2);
+        PagerTabStrip pagerTabStrip = (PagerTabStrip) view.findViewById(R.id.pager_header_sessions);
         pagerTabStrip.setDrawFullUnderline(true);
 
 

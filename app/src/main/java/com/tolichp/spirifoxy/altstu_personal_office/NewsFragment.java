@@ -41,7 +41,7 @@ public class NewsFragment extends Fragment {
 //        setContentView(R.layout.fragment_news);
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
-        viewPager = (ViewPager) view.findViewById(R.id.pager);
+        viewPager = (ViewPager) view.findViewById(R.id.pager_news);
         fragmentsList = new ArrayList<>();
         fragmentsList.add(new NewsMessagesFragment());
         fragmentsList.add(new NewsNotificationsFragment());
