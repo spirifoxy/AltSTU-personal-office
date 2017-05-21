@@ -1,9 +1,8 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
-import android.app.ActionBar;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,12 +16,10 @@ import java.util.Map;
 
 public class SubjectFragment extends Fragment {
 
-    private String[] mGroupsArray = new String[] { "Зима", "Весна", "Лето", "Осень" };
+    private String[] mGroupsArray = new String[] { "Курсовые работы", "Контрольные работы"};
 
-    private String[] mWinterMonthsArray = new String[] { "Декабрь", "Январь", "Февраль" };
-    private String[] mSpringMonthsArray = new String[] { "Март", "Апрель", "Май" };
-    private String[] mSummerMonthsArray = new String[] { "Июнь", "Июль", "Август" };
-    private String[] mAutumnMonthsArray = new String[] { "Сентябрь", "Октябрь", "Ноябрь" };
+    private String[] mWinterMonthsArray = new String[] { "Курсовая №1", "Курсовая №2"};
+    private String[] mSpringMonthsArray = new String[] { "Контрольная работа №1", "Контрольная работа №2" };
 
 
     /*@Override
@@ -115,23 +112,23 @@ public class SubjectFragment extends Fragment {
         }
         сhildDataList.add(сhildDataItemList);
 
-        // создаем коллекцию элементов для третьей группы
-        сhildDataItemList = new ArrayList<>();
-        for (String month : mSummerMonthsArray) {
-            map = new HashMap<>();
-            map.put("monthName", month);
-            сhildDataItemList.add(map);
-        }
-        сhildDataList.add(сhildDataItemList);
-
-        // создаем коллекцию элементов для четвертой группы
-        сhildDataItemList = new ArrayList<>();
-        for (String month : mAutumnMonthsArray) {
-            map = new HashMap<>();
-            map.put("monthName", month);
-            сhildDataItemList.add(map);
-        }
-        сhildDataList.add(сhildDataItemList);
+//        // создаем коллекцию элементов для третьей группы
+//        сhildDataItemList = new ArrayList<>();
+//        for (String month : mSummerMonthsArray) {
+//            map = new HashMap<>();
+//            map.put("monthName", month);
+//            сhildDataItemList.add(map);
+//        }
+//        сhildDataList.add(сhildDataItemList);
+//
+//        // создаем коллекцию элементов для четвертой группы
+//        сhildDataItemList = new ArrayList<>();
+//        for (String month : mAutumnMonthsArray) {
+//            map = new HashMap<>();
+//            map.put("monthName", month);
+//            сhildDataItemList.add(map);
+//        }
+//        сhildDataList.add(сhildDataItemList);
 
         // список атрибутов элементов для чтения
         String childFrom[] = new String[] { "monthName" };

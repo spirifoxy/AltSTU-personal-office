@@ -1,11 +1,9 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -172,8 +170,8 @@ public class NavigationMenuActivity extends AppCompatActivity
 //
 //        } else if (id == R.id.nav_send) {
 //
-        } else if (id == R.id.nav_test) {
-            fragment = SubjectFragment.newInstance();
+//        } else if (id == R.id.nav_test) {
+//            fragment = SubjectFragment.newInstance();
         }/* else if (id == android.R.id.home) {
             getSupportFragmentManager().popBackStack();
             return true;

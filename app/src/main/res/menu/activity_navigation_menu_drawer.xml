@@ -13,16 +13,16 @@
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Аттестация" />
+            android:title="Успеваемость" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Сессии" />
 
-        <item
-            android:id="@+id/nav_test"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="test" />
+        <!--<item-->
+            <!--android:id="@+id/nav_test"-->
+            <!--android:icon="@drawable/ic_menu_slideshow"-->
+            <!--android:title="Успеваемость" />-->
 
     </group>
 
