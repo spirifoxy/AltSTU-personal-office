@@ -13,5 +13,10 @@
     <string name="annotation">Аннотация</string>
     <string name="ilias">ILIAS</string>
 
+    <!--Strings related to menu-->
+    <string name="timetable_menu">Расписание</string>
+    <string name="messages_menu">Сообщения</string>
+    <string name="progress_menu">Учёба</string>
+    <string name="sessions_menu">Сессии</string>
 
 </resources>
