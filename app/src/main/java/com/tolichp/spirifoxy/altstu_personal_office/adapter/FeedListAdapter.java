@@ -15,6 +15,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.tolichp.spirifoxy.altstu_personal_office.R;
 import com.tolichp.spirifoxy.altstu_personal_office.app.AppController;
 import com.tolichp.spirifoxy.altstu_personal_office.data.FeedItem;
+import com.tolichp.spirifoxy.altstu_personal_office.utils.Util;
 
 import java.util.List;
 
@@ -86,7 +87,7 @@ public class FeedListAdapter extends BaseAdapter {
 
         // Checking for null feed url
         if (item.getUrl() != null) {
-            url.setText(Html.fromHtml("<a href=\"" + item.getUrl() + "\">"
+            url.setText(Util.fromHtml("<a href=\"" + item.getUrl() + "\">"
                     + item.getUrl() + "</a> "));
 
             // Making url clickable

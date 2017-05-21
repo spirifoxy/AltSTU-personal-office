@@ -7,6 +7,64 @@
     android:orientation="vertical"
     tools:context="com.tolichp.spirifoxy.altstu_personal_office.SubjectFragment">
 
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/annotation"
+            android:textSize="@dimen/text_normal"
+            android:textStyle="bold" />
+        <!--<LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/feed_item_profile_name"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/timestamp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/timestamp"
+                android:textSize="@dimen/feed_item_timestamp" />
+        </LinearLayout>-->
+
+        <TextView
+            android:id="@+id/textview_annotation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ilias"
+            android:textSize="@dimen/text_normal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textview_ilias"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:linksClickable="true"
+            android:textColorLink="@color/link" />
+    </LinearLayout>
+
+
     <ExpandableListView
         android:id="@+id/exlist_view_subject"
         android:layout_width="match_parent"

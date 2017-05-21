@@ -3,12 +3,22 @@ package com.tolichp.spirifoxy.altstu_personal_office;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
+import android.widget.TextView;
+
+import com.tolichp.spirifoxy.altstu_personal_office.utils.Util;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +30,7 @@ public class SubjectFragment extends Fragment {
 
     private String[] mWinterMonthsArray = new String[] { "Курсовая №1", "Курсовая №2"};
     private String[] mSpringMonthsArray = new String[] { "Контрольная работа №1", "Контрольная работа №2" };
+    private WebView mWebView;
 
 
     /*@Override
@@ -43,7 +54,7 @@ public class SubjectFragment extends Fragment {
     }
 
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         // Handle action bar item clicks here. The action bar will
@@ -52,15 +63,15 @@ public class SubjectFragment extends Fragment {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        /*if (id == R.id.action_settings) {
+        *//*if (id == R.id.action_settings) {
             return true;
-        }  else */if (id == R.id.home) {
+        }  else *//*if (id == R.id.home) {
             getActivity().getSupportFragmentManager().popBackStack();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @Nullable
     @Override
@@ -146,8 +157,41 @@ public class SubjectFragment extends Fragment {
         expandableListView.setAdapter(adapter);
 
 
+        TextView tvAnnotation = (TextView) view.findViewById(R.id.textview_annotation);
+        final TextView tvIlias = (TextView) view.findViewById(R.id.textview_ilias);
+
+
+
+        mWebView = (WebView) view.findViewById(R.id.webview);
+        //mWebView.loadUrl("https://google.com");
+
+        // Enable Javascript
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        // Force links and redirects to open in the WebView instead of in a browser
+        mWebView.setWebViewClient(new WebViewClient());
+        mWebView.setVisibility(View.GONE);
         /*ActionBar actionBar = getActivity().getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);*/
+
+
+
+
+        tvAnnotation.setText("Test test test test test test test test test test test test test test test test test test test test test test test test test test test test test ");
+        tvIlias.setText("https://habrahabr.ru/post/270121/");
+        tvIlias.setText(Util.fromHtml("<a href=\"" + "https://habrahabr.ru/post/270121/" + "\">" + "https://habrahabr.ru/post/270121/" + "</a> "));
+//        tvIlias.setText(Html.fromHtml("<a href=\"" + "https://habrahabr.ru/post/270121/" + "\">" + "https://habrahabr.ru/post/270121/" + "</a> "));
+        //tvIlias.setMovementMethod(LinkMovementMethod.getInstance());
+        tvIlias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mWebView.loadUrl(tvIlias.getText().toString());
+                mWebView.setVisibility(View.VISIBLE);
+            }
+        });
+
+
         setHasOptionsMenu(true);
 
         return view;//super.onCreateView(inflater, container, savedInstanceState);

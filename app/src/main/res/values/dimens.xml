@@ -5,7 +5,7 @@
 
     <dimen name="text_small">14sp</dimen>
     <dimen name="text_normal">20sp</dimen>
-    <dimen name="text_big">24sp</dimen>
+    <dimen name="text_big">22sp</dimen>
 
     <dimen name="margin_normal">10dp</dimen>
     <dimen name="padding_normal">5dp</dimen>

@@ -10,5 +10,8 @@
     <string name="attestation_help">(аттестация/посещаемость)</string>
     <string name="attestation_empty">- / -</string>
 
+    <string name="annotation">Аннотация</string>
+    <string name="ilias">ILIAS</string>
+
 
 </resources>
