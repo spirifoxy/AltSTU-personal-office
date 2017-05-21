@@ -3,5 +3,8 @@
 
     <!-- Strings related to teacher -->
 
-    <string name="hello">Hello teacher</string>
+
+    <!-- Strings related to menu -->
+    <string name="messages">Сообщения</string>
+
 </resources>

@@ -7,7 +7,7 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Расписание" />
         <item
-            android:id="@+id/nav_messages"
+            android:id="@+id/nav_messages_st"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Сообщения" />
         <item

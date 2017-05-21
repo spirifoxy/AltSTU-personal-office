@@ -3,20 +3,8 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_timetable"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Расписание" />
-        <item
-            android:id="@+id/nav_messages"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Сообщения" />
-        <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_messages_t"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Успеваемость" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Сессии" />
+            android:title="@string/messages" />
     </group>
 </menu>
