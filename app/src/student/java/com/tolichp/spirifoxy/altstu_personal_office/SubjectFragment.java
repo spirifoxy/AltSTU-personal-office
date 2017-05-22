@@ -3,10 +3,7 @@ package com.tolichp.spirifoxy.altstu_personal_office;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -17,8 +14,6 @@ import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
 import com.tolichp.spirifoxy.altstu_personal_office.utils.Util;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
