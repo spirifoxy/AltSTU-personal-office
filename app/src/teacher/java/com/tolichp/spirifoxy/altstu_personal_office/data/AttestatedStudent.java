@@ -13,7 +13,9 @@ public class AttestatedStudent {
     private int attendance2;
     private String FIO;
 
-    public AttestatedStudent(int number, int attestation1, int attestation2, int attendance1, int attendance2, String FIO) {
+    public AttestatedStudent( String FIO, int number,
+                              int attestation1, int attestation2,
+                              int attendance1, int attendance2) {
         this.number = number;
         this.attestation1 = attestation1;
         this.attestation2 = attestation2;
