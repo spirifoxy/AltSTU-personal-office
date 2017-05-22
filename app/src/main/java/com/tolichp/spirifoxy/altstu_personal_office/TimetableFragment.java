@@ -2,12 +2,18 @@ package com.tolichp.spirifoxy.altstu_personal_office;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.ViewPagerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Day;
@@ -37,6 +43,7 @@ public class TimetableFragment extends Fragment {
 
     private ArrayList<Fragment> fragmentsList;
     private PagerAdapter pagerAdapter; //TODO убрать? мб сразу созданный объект слать куда там надо
+    private Spinner mCountrySpinner;
 
 
     public static TimetableFragment newInstance() {//String param1, String param2) {
@@ -53,6 +60,8 @@ public class TimetableFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }*/
+
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -108,9 +117,41 @@ public class TimetableFragment extends Fragment {
         springIndicator.setViewPager(viewPager);
 
 
+
         return view;
     }
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.week_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.spinner_week);
+        mCountrySpinner = (Spinner) MenuItemCompat.getActionView(menuItem);
+
+        ArrayAdapter<String> countryAdapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.week_numbers));
+        countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mCountrySpinner.setAdapter(countryAdapter);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            /*case R.id.action_1:
+
+                return true;
+
+            case R.id.action_2:
+
+                return true;*/
+        }
+
+        return false;
+    }
+    
 
     private int getCurrentWeekNumber() {
         Locale locale = new Locale("ru","RU");
