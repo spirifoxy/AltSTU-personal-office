@@ -64,6 +64,7 @@
 
     <string name="messages">сообщения</string>
     <string name="notifications">оповещения</string>
+    <string name="timetable">Расписание</string>
 
     <string name="semester1">Семестр 1</string>
     <string name="semester2">Семестр 2</string>
@@ -75,6 +76,13 @@
     <string name="semester8">Семестр 8</string>
 
     <string name="title_activity_navigation_menu">NavigationMenuActivity</string>
+
+
+    <!--Strings related to DatePicker-->
+    <string name="choose_date">Выберите дату</string>
+    <string name="ready">Готово</string>
+    <string name="date">Дата</string>
+
     <!--
 
 
