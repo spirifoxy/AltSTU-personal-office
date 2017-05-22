@@ -14,32 +14,20 @@
             android:id="@+id/textview_number"
             android:layout_width="match_parent"
             android:layout_height="@dimen/string_height"
-            android:layout_weight="1.9" />
+            android:layout_weight="0.9" />
 
         <TextView
             android:id="@+id/textview_full_name"
             android:layout_width="match_parent"
             android:layout_height="@dimen/string_height"
-            android:layout_weight="1" />
+            android:layout_weight="0.6" />
 
-        <RadioGroup
+        <CheckBox
+            android:id="@+id/checkBox3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.2"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/radio_present"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/string_height"
-                android:layout_marginRight="@dimen/margin_big" />
-
-            <RadioButton
-                android:id="@+id/radio_absent"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/string_height" />
-        </RadioGroup>
+            android:layout_height="@dimen/string_height"
+            android:layout_weight="1"
+            android:text="" />
 
     </LinearLayout>
 

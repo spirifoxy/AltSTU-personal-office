@@ -107,13 +107,6 @@
                 android:text="@string/present"
                 android:textAlignment="center" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.40"
-                android:text="@string/absent"
-                android:textAlignment="center" />
-
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
