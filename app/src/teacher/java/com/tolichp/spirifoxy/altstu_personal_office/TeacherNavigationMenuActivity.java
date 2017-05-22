@@ -25,6 +25,9 @@ public class TeacherNavigationMenuActivity extends NavigationMenuActivity {
         } else if (id == R.id.nav_group_settings){
             fragment = GroupSettingsFragment.newInstance();
         }
+        else if (id == R.id.nav_timetable){
+            fragment = TimetableFragment.newInstance();
+        }
         FragmentManager fm = getSupportFragmentManager();
         fm.addOnBackStackChangedListener(this);
         FragmentTransaction transaction = fm.beginTransaction();

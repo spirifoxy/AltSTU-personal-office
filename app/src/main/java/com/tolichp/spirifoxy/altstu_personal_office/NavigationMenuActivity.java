@@ -3,9 +3,8 @@ package com.tolichp.spirifoxy.altstu_personal_office;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -27,8 +26,6 @@ public class NavigationMenuActivity extends AppCompatActivity
         setContentView(R.layout.activity_navigation_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(
@@ -104,10 +101,10 @@ public class NavigationMenuActivity extends AppCompatActivity
     }*/
 
 
-
-
-
-
+    public void onClickDate(View v) {
+        DialogFragment dateDialog = new DatePicker();
+        dateDialog.show(getSupportFragmentManager(), "datePicker");
+    }
 
     @Override
     public void onBackPressed() {

@@ -20,4 +20,8 @@
 
     <string name="group_settings">Настройки групп</string>
 
+    <!--Strings related to attestation-->
+    <string name="attestationAt">Атт./Посещ.</string>
+    <string name="slash">/</string>
+
 </resources>

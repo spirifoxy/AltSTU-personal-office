@@ -140,5 +140,4 @@ public class TimetableFragment extends Fragment {
         }
         return week - semBegin.get(Calendar.WEEK_OF_YEAR) + 1;
     }
-
 }
