@@ -18,5 +18,6 @@
     <string name="present">Присутс.</string>
     <string name="absent">Отсутс.</string>
 
+    <string name="group_settings">Настройки групп</string>
 
 </resources>
