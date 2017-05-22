@@ -18,6 +18,8 @@ public class TeacherNavigationMenuActivity extends NavigationMenuActivity {
 
         if (id == R.id.nav_messages_t) {
             fragment = TeacherMessages.newInstance();
+        } else if (id == R.id.nav_attendance) {
+            fragment = AttendanceFragment.newInstance();
         }
         FragmentManager fm = getSupportFragmentManager();
         fm.addOnBackStackChangedListener(this);

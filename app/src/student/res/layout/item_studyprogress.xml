@@ -32,7 +32,7 @@
                 android:layout_weight="3"
                 android:background="@color/block_light"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_normal" />
+                android:textSize="@dimen/text_medium2" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:text="@string/attestation"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_small" />
+                android:textSize="@dimen/text_small2" />
 
             <!--<TextView
                 android:layout_width="match_parent"
@@ -70,7 +70,7 @@
                     android:layout_weight="1"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_small"
+                    android:textSize="@dimen/text_small2"
                     android:text="@string/attestation_empty"/>
 
                 <TextView
@@ -80,7 +80,7 @@
                     android:layout_weight="1"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_small"
+                    android:textSize="@dimen/text_small2"
                     android:text="@string/attestation_empty" />
 
             </LinearLayout>
