@@ -19,4 +19,7 @@
     <string name="progress_menu">Учёба</string>
     <string name="sessions_menu">Сессии</string>
 
+    <!--Strings related to DatePicker-->
+    <string name="choose_date">Выберите дату</string>
+    <string name="ready">Готово</string>
 </resources>
