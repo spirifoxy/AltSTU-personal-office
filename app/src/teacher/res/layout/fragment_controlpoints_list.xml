@@ -1,8 +1,14 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.tolichp.spirifoxy.altstu_personal_office.ControlPointsListFragment">
+
+    <Spinner
+        android:id="@+id/spinner_controlpointsstudentgroup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/string_height"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/view_recycler_controlpoints"
@@ -10,4 +16,4 @@
         android:layout_height="match_parent"
         android:scrollbars="none"/>
 
-</FrameLayout>
+</LinearLayout>

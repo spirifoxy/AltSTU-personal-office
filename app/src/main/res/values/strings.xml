@@ -36,8 +36,6 @@
 
 
     <!-- Strings related to menu items -->
-    <string name="spinner">Spinner</string>
-    <string name="button">Button</string>
     <string name="action_settings">Settings</string>
 
     <!-- Strings related to studyprogress -->

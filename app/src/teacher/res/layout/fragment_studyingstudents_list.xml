@@ -2,20 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.tolichp.spirifoxy.altstu_personal_office.StudyingStudentsListFragment">
 
     <Spinner
         android:id="@+id/spinner_studyingstudentgroup"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="11" />
+        android:layout_height="@dimen/string_height"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/view_recycler_study"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:layout_weight="1"   />
+        android:scrollbars="none" />
+
 
 </LinearLayout>

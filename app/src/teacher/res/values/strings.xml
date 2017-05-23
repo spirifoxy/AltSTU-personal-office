@@ -24,4 +24,7 @@
     <string name="attestationAt">Атт./Посещ.</string>
     <string name="slash">/</string>
 
+
+
+    <string name="select_control_point_error">Выберите тип контрольных точек</string>
 </resources>

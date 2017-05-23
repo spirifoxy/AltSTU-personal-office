@@ -31,6 +31,7 @@ public class StudyingStudentFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActivity().setTitle(getResources().getString(R.string.study));
     }
 
     @Nullable

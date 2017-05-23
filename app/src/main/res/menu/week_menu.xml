@@ -4,5 +4,5 @@
     <item android:id="@+id/spinner_week"
         app:showAsAction="ifRoom"
         app:actionViewClass="android.widget.Spinner"
-        android:title="@string/spinner" />
+        android:title="" />
 </menu>
