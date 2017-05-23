@@ -8,6 +8,7 @@
     <string name="attendance">Журнал посещений</string>
     <string name="attestation">Аттестация</string>
     <string name="group_settings">Настройки групп</string>
+    <string name="study">Успеваемость</string>
 
     <!-- Strings related to attendance -->
     <string name="discipline">Дисциплина</string>
@@ -18,8 +19,6 @@
     <string name="full_name">ФИО</string>
     <string name="present">Присутс.</string>
     <string name="absent">Отсутс.</string>
-
-
 
     <!--Strings related to attestation-->
     <string name="attestationAt">Атт./Посещ.</string>

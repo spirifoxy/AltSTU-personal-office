@@ -29,6 +29,9 @@ public class TeacherNavigationMenuActivity extends NavigationMenuActivity {
             case R.id.nav_group_settings:
                 fragment = GroupSettingsFragment.newInstance();
                 break;
+            case R.id.nav_study:
+                fragment = StudyFragment.newInstance();
+                break;
         }
 
         FragmentManager fm = getSupportFragmentManager();

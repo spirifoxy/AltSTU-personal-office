@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="@dimen/feed_item_margin"
+        android:layout_marginRight="@dimen/feed_item_margin"
+        android:layout_marginTop="@dimen/feed_item_margin"
+        android:background="@drawable/border_ttitem_set"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/item_border"
+        android:paddingTop="@dimen/item_border"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/layout_relative"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textview_fio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@color/block_light"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_medium2" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_relative"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/padding_big">
+
+            <ImageView
+                android:id="@+id/imageview_showmore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                app:srcCompat="@android:drawable/ic_menu_slideshow" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
