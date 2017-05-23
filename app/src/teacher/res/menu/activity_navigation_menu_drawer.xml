@@ -22,5 +22,9 @@
             android:id="@+id/nav_group_settings"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/group_settings" />
+        <item
+            android:id="@+id/nav_study"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/study" />
     </group>
 </menu>

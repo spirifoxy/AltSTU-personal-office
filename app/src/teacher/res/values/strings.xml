@@ -19,6 +19,7 @@
     <string name="absent">Отсутс.</string>
 
     <string name="group_settings">Настройки групп</string>
+    <string name="study">Успеваемость</string>
 
     <!--Strings related to attestation-->
     <string name="attestationAt">Атт./Посещ.</string>
