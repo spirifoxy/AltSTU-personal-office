@@ -34,6 +34,8 @@
     <string name="first_feb">"01-02</string>
 
     <string name="spinner">Spinner</string>
+    <string name="button">Button</string>
+    <string name="action_settings">Settings</string>
 
 
     <!-- Strings related to studyprogress -->
@@ -60,7 +62,6 @@
 
     <string name="action_example">Example action</string>
 
-    <string name="action_settings">Settings</string>
 
     <string name="messages">сообщения</string>
     <string name="notifications">оповещения</string>

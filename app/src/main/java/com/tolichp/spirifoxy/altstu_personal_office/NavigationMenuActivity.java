@@ -100,12 +100,6 @@ public class NavigationMenuActivity extends AppCompatActivity
         return true;
     }*/
 
-
-    public void onClickDate(View v) {
-        DialogFragment dateDialog = new DatePicker();
-        dateDialog.show(getSupportFragmentManager(), "datePicker");
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -133,7 +127,13 @@ public class NavigationMenuActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }  /*else if (id == R.id.home) {
+        } else if (id == R.id.action_datapicker) {
+            DialogFragment dateDialog = new DatePicker();
+            dateDialog.show(getSupportFragmentManager(), "datePicker");
+            return true;
+        }
+
+        /*else if (id == R.id.home) {
             getSupportFragmentManager().popBackStack();
             return true;
         }*/

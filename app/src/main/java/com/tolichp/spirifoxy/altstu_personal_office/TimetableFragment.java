@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.ViewPagerAdapter;
@@ -124,8 +125,13 @@ public class TimetableFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
+        super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.week_menu, menu);
+        inflater.inflate(R.menu.datapicker_menu, menu);
+
+        /*MenuItem btn = menu.findItem(R.id.action_datapicker);
+        btn.setBackgroundResource(R.drawable.ic_launcher);*/
+
         MenuItem menuItem = menu.findItem(R.id.spinner_week);
         mCountrySpinner = (Spinner) MenuItemCompat.getActionView(menuItem);
 
@@ -133,8 +139,13 @@ public class TimetableFragment extends Fragment {
                 android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.week_numbers));
         countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mCountrySpinner.setAdapter(countryAdapter);
-        super.onCreateOptionsMenu(menu, inflater);
     }
+
+    /*@Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        MenuItem menuItem = menu.findItem(R.id.menu_item_to_change_icon_for); // You can change the state of the menu item here if you call getActivity().supportInvalidateOptionsMenu(); somewhere in your code
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -151,7 +162,7 @@ public class TimetableFragment extends Fragment {
 
         return false;
     }
-    
+
 
     private int getCurrentWeekNumber() {
         Locale locale = new Locale("ru","RU");

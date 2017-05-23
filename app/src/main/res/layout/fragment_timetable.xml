@@ -6,27 +6,6 @@
     tools:context="com.tolichp.spirifoxy.altstu_personal_office.TimetableFragment"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:id="@+id/spinner_week"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.4" />
-
-        <Button
-            android:id="@+id/button_choose_date"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:onClick="onClickDate"
-            android:text="@string/date" />
-
-    </LinearLayout>
-
     <github.chenupt.springindicator.SpringIndicator
         android:id="@+id/indicator"
         android:layout_width="match_parent"
