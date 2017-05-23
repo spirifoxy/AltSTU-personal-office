@@ -31,7 +31,8 @@
         android:layout_height="0dp"
         android:layout_weight="0.62"
         app:srcCompat="@drawable/altgtu"
-        android:contentDescription="@string/logo" />
+        />
+    <!--android:contentDescription="@string/logo" -->
         <!--android:background="@android:color/transparent"-->
 
 
@@ -46,11 +47,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+           <!-- <TextView
                 android:id="@+id/textViewHello"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/hello" />
+                android:text="@string/hello" />-->
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"

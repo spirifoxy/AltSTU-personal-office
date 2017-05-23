@@ -1,22 +1,29 @@
 <resources>
-    <string name="app_name">AltSTU-personal-office</string>
+    <string name="app_name">ЛК студента АлтГТУ</string>
 
-    <!-- Strings related to student -->
-    <string name="hello">Hello student</string>
+    <!--Strings related to menu-->
+    <string name="messages">Сообщения</string>
+    <string name="studyprogress">Учёба</string>
+    <string name="sessions">Сессии</string>
 
+    <!-- Strings related to news -->
+    <string name="messages_tab">сообщения</string>
+    <string name="notifications_tab">оповещения</string>
 
     <!-- Strings related to studyprogress -->
     <string name="attestation">Аттестация/посещаемость</string>
     <string name="attestation_help">(аттестация/посещаемость)</string>
     <string name="attestation_empty">- / -</string>
-
     <string name="annotation">Аннотация</string>
     <string name="ilias">ILIAS</string>
 
-    <!--Strings related to menu-->
-    <string name="timetable_menu">Расписание</string>
-    <string name="messages_menu">Сообщения</string>
-    <string name="progress_menu">Учёба</string>
-    <string name="sessions_menu">Сессии</string>
-
+    <!-- Strings related to sessions -->
+    <string name="semester1">Семестр 1</string>
+    <string name="semester2">Семестр 2</string>
+    <string name="semester3">Семестр 3</string>
+    <string name="semester4">Семестр 4</string>
+    <string name="semester5">Семестр 5</string>
+    <string name="semester6">Семестр 6</string>
+    <string name="semester7">Семестр 7</string>
+    <string name="semester8">Семестр 8</string>
 </resources>

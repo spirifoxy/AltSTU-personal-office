@@ -1,12 +1,13 @@
 <resources>
-    <string name="app_name">AltSTU-personal-office</string>
-
+    <string name="app_name">ЛК преподавателя АлтГТУ</string>
     <!-- Strings related to teacher -->
 
 
     <!-- Strings related to menu -->
     <string name="messages">Сообщения</string>
     <string name="attendance">Журнал посещений</string>
+    <string name="attestation">Аттестация</string>
+    <string name="group_settings">Настройки групп</string>
 
     <!-- Strings related to attendance -->
     <string name="discipline">Дисциплина</string>
@@ -18,7 +19,7 @@
     <string name="present">Присутс.</string>
     <string name="absent">Отсутс.</string>
 
-    <string name="group_settings">Настройки групп</string>
+
 
     <!--Strings related to attestation-->
     <string name="attestationAt">Атт./Посещ.</string>

@@ -35,10 +35,16 @@ public class NewsFragment extends Fragment {
         return fragment;
     }
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getActivity().setTitle(getResources().getString(R.string.messages));
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        setContentView(R.layout.fragment_news);
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
         viewPager = (ViewPager) view.findViewById(R.id.pager_news);
@@ -58,8 +64,4 @@ public class NewsFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 }

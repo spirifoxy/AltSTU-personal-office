@@ -24,20 +24,4 @@
         <item>@string/week_one</item>
         <item>@string/week_two</item>
     </string-array>
-
-    <string-array name="info_titles">
-        <item>@string/messages</item>
-        <item>@string/notifications</item>
-    </string-array>
-
-    <string-array name="semesters_titles">
-        <item>@string/semester1</item>
-        <item>@string/semester2</item>
-        <item>@string/semester3</item>
-        <item>@string/semester4</item>
-        <item>@string/semester5</item>
-        <item>@string/semester6</item>
-        <item>@string/semester7</item>
-        <item>@string/semester8</item>
-    </string-array>
 </resources>

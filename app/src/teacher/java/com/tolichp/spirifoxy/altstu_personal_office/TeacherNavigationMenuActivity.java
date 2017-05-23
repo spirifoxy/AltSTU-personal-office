@@ -9,25 +9,28 @@ import android.view.MenuItem;
 
 public class TeacherNavigationMenuActivity extends NavigationMenuActivity {
 
-
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
         Fragment fragment = null;
 
-        if (id == R.id.nav_messages_t) {
-            fragment = TeacherMessages.newInstance();
-        } else if (id == R.id.nav_attendance) {
-            fragment = AttendanceFragment.newInstance();
-        } else if (id == R.id.nav_attestation_t){
-            fragment = AttestationTeacherFragment.newInstance();
-        } else if (id == R.id.nav_group_settings){
-            fragment = GroupSettingsFragment.newInstance();
+        switch(item.getItemId()) {
+            case R.id.nav_timetable:
+                fragment = TimetableFragment.newInstance();
+                break;
+            case R.id.nav_messages_t:
+                fragment = TeacherMessages.newInstance();
+                break;
+            case R.id.nav_attendance:
+                fragment = AttendanceFragment.newInstance();
+                break;
+            case R.id.nav_attestation_t:
+                fragment = AttestationTeacherFragment.newInstance();
+                break;
+            case R.id.nav_group_settings:
+                fragment = GroupSettingsFragment.newInstance();
+                break;
         }
-        else if (id == R.id.nav_timetable){
-            fragment = TimetableFragment.newInstance();
-        }
+
         FragmentManager fm = getSupportFragmentManager();
         fm.addOnBackStackChangedListener(this);
         FragmentTransaction transaction = fm.beginTransaction();

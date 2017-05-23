@@ -1,4 +1,4 @@
-package com.tolichp.spirifoxy.altstu_personal_office;
+package com.tolichp.spirifoxy.altstu_personal_office.utils;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.widget.Button;
+
+import com.tolichp.spirifoxy.altstu_personal_office.R;
 
 import java.util.Calendar;
 

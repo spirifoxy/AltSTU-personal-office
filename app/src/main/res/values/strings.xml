@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">AltSTU-personal-office</string>
+    <!--<string name="app_name">AltSTU-personal-office</string>-->
+
+    <!-- Strings related to menu -->
+    <string name="timetable">Расписание</string>
+
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -13,9 +17,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-
-    <string name="hello">Hello</string>
-    <!--<string name="title_activity_login_activitytest">Sign in</string>-->
 
 
     <!-- Strings related to timetable -->
@@ -33,77 +34,44 @@
     <string name="first_sep">01-09</string>
     <string name="first_feb">"01-02</string>
 
+
+    <!-- Strings related to menu items -->
     <string name="spinner">Spinner</string>
     <string name="button">Button</string>
     <string name="action_settings">Settings</string>
 
-
     <!-- Strings related to studyprogress -->
-    <string name="attestation">Аттестация</string>
-    <string name="attestation_help">(аттестация/посещаемость)</string>
+    <!--<string name="attestation">Аттестация</string>-->
+    <!--<string name="attestation_help">(аттестация/посещаемость)</string>-->
+
 
     <string name="exam">Экзамен</string>
     <string name="credit">Зачёт</string>
     <string name="points">75 (отлично)</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="logo">Логотип</string>
+    <!--<string name="hello_blank_fragment">Hello blank fragment</string>-->
+    <!--<string name="logo">Логотип</string>-->
 
 
     <string name="title_activity_login_activitytest">Sign in</string>
-    <string name="title_activity_menu">MenuActivity</string>
+    <!--<string name="title_activity_menu">MenuActivity</string>-->
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <!--<string name="title_section1">Section 1</string>-->
+    <!--<string name="title_section2">Section 2</string>-->
+    <!--<string name="title_section3">Section 3</string>-->
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_example">Example action</string>
+    <!--<string name="action_example">Example action</string>-->
 
 
-    <string name="messages">сообщения</string>
-    <string name="notifications">оповещения</string>
-    <string name="timetable">Расписание</string>
 
-    <string name="semester1">Семестр 1</string>
-    <string name="semester2">Семестр 2</string>
-    <string name="semester3">Семестр 3</string>
-    <string name="semester4">Семестр 4</string>
-    <string name="semester5">Семестр 5</string>
-    <string name="semester6">Семестр 6</string>
-    <string name="semester7">Семестр 7</string>
-    <string name="semester8">Семестр 8</string>
-
-    <string name="title_activity_navigation_menu">NavigationMenuActivity</string>
 
 
     <!--Strings related to DatePicker-->
     <string name="choose_date">Выберите дату</string>
     <string name="ready">Готово</string>
     <string name="date">Дата</string>
-
-    <!--
-
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_about">About</string>
-
-    <string name="license">
-        Copyright 2015 chenupt
-\n\n
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-\n\n
-    http://www.apache.org/licenses/LICENSE-2.0
-\n\n
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-    </string>-->
 
 </resources>

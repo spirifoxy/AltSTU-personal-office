@@ -40,6 +40,7 @@ public class AttendanceFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActivity().setTitle(getResources().getString(R.string.attendance));
     }
 
     @Nullable

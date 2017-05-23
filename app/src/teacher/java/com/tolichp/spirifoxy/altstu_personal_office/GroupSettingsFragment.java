@@ -31,6 +31,7 @@ public class GroupSettingsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActivity().setTitle(getResources().getString(R.string.group_settings));
     }
 
 
@@ -38,19 +39,15 @@ public class GroupSettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        //        setContentView(R.layout.fragment_studyprogress);
         View view = inflater.inflate(R.layout.fragment_groupsettings, container, false);
 
 
         Fragment fragment = ControlPointsListFragment.newInstance();
 
-//        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_groupsettings, fragment);
         transaction.commit();
 
         return view;
-
-
     }
 }

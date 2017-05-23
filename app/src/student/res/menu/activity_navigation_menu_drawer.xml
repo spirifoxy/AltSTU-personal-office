@@ -5,38 +5,18 @@
         <item
             android:id="@+id/nav_timetable"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/timetable_menu" />
+            android:title="@string/timetable" />
         <item
             android:id="@+id/nav_messages_st"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/messages_menu" />
+            android:title="@string/messages" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_studyprogress"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/progress_menu" />
+            android:title="@string/studyprogress" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_sessions"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/sessions_menu" />
-
-        <!--<item-->
-            <!--android:id="@+id/nav_test"-->
-            <!--android:icon="@drawable/ic_menu_slideshow"-->
-            <!--android:title="Успеваемость" />-->
-
+            android:title="@string/sessions" />
     </group>
-
-    <!--<item android:title="Communicate">-->
-        <!--<menu>-->
-            <!--<item-->
-                <!--android:id="@+id/nav_share"-->
-                <!--android:icon="@drawable/ic_menu_share"-->
-                <!--android:title="Share" />-->
-            <!--<item-->
-                <!--android:id="@+id/nav_send"-->
-                <!--android:icon="@drawable/ic_menu_send"-->
-                <!--android:title="Send" />-->
-        <!--</menu>-->
-    <!--</item>-->
-
 </menu>

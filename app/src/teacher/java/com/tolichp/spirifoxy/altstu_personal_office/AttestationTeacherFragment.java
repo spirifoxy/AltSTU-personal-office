@@ -31,6 +31,7 @@ public class AttestationTeacherFragment extends android.support.v4.app.Fragment 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActivity().setTitle(getResources().getString(R.string.attestation));
     }
 
     private AdapterView.OnItemSelectedListener mSpinnerItemSelectListener = new AdapterView.OnItemSelectedListener() {

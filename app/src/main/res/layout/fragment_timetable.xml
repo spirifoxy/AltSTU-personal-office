@@ -13,7 +13,7 @@
         android:background="@color/gray_light"
         app:siIndicatorColor="@color/color_primary"
         app:siIndicatorColors="@array/indicator_colors"
-        app:siSelectedTextColor="@android:color/white"
+        app:siSelectedTextColor="@color/white"
         app:siTextColor="@color/black"
         app:siTextSize="18sp"
         app:layout_constraintRight_toRightOf="parent"

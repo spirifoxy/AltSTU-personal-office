@@ -17,6 +17,7 @@ public class TeacherMessages extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActivity().setTitle(getResources().getString(R.string.messages));
     }
 
     @Nullable

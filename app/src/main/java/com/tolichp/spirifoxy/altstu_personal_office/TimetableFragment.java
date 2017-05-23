@@ -1,6 +1,7 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.PagerAdapter;
@@ -18,6 +19,7 @@ import android.widget.Spinner;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.ViewPagerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Day;
+import com.tolichp.spirifoxy.altstu_personal_office.utils.DatePicker;
 
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
@@ -39,7 +41,6 @@ public class TimetableFragment extends Fragment {
      }*/
     static final String TAG = "myLogs";
 
-    //    private ViewPager pager;
     private ScrollerViewPager viewPager;
 
     private ArrayList<Fragment> fragmentsList;
@@ -61,7 +62,7 @@ public class TimetableFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }*/
-
+        getActivity().setTitle(getResources().getString(R.string.timetable));
         setHasOptionsMenu(true);
     }
 
@@ -149,17 +150,15 @@ public class TimetableFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            /*case R.id.action_1:
-
+        switch (item.getItemId()) {
+            case R.id.action_datapicker:
+                DialogFragment dateDialog = new DatePicker();
+                dateDialog.show(getActivity().getSupportFragmentManager(), "datePicker");
                 return true;
-
-            case R.id.action_2:
+            /*case R.id.action_2:
 
                 return true;*/
         }
-
         return false;
     }
 
