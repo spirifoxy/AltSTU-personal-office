@@ -11,6 +11,10 @@
     <string name="study">Успеваемость</string>
     <string name="groups">Группы</string>
 
+    <string name="action_day_view">День</string>
+    <string name="action_week_view">Неделя</string>
+
+
     <!-- Strings related to attendance -->
     <string name="discipline">Дисциплина</string>
     <string name="time">Время</string>
