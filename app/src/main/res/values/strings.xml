@@ -5,6 +5,10 @@
     <string name="timetable">Расписание</string>
 
 
+    <string name="action_day_view">День</string>
+    <string name="action_week_view">Неделя</string>
+
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Пароль</string>
