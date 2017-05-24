@@ -16,6 +16,8 @@ public class TeacherNavigationMenuActivity extends NavigationMenuActivity {
         switch(item.getItemId()) {
             case R.id.nav_timetable:
                 fragment = TimetableFragment.newInstance();
+//                fragment = TTWeekFragment.newInstance();
+//                fragment = TTDayFragment.newInstance();
                 break;
             case R.id.nav_messages_t:
                 fragment = TeacherMessages.newInstance();
