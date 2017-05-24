@@ -9,6 +9,7 @@
     <string name="attestation">Аттестация</string>
     <string name="filling_disciplines">Наполнение дисциплины</string>
     <string name="study">Успеваемость</string>
+    <string name="groups">Группы</string>
 
     <!-- Strings related to attendance -->
     <string name="discipline">Дисциплина</string>
