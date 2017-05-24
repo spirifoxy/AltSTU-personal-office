@@ -14,24 +14,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ExpandableListView;
 import android.widget.NumberPicker;
-import android.widget.SimpleExpandableListAdapter;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.ControlPointsInfoRecyclerAdapter;
-import com.tolichp.spirifoxy.altstu_personal_office.adapter.ControlPointsRecyclerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.ControlPoint;
-import com.tolichp.spirifoxy.altstu_personal_office.utils.Util;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ControlPointInfoFragment extends Fragment {
 
@@ -110,6 +102,19 @@ public class ControlPointInfoFragment extends Fragment {
         np.setMinValue(1);
         np.setMaxValue(20);
         np.setWrapSelectorWheel(false);
+
+
+        Spinner spinner = (Spinner) dialog.findViewById(R.id.spinner_isInAttestation);
+
+        ArrayList <String> items = new ArrayList <>();
+        items.add("1 аттестация");
+        items.add("2 аттестация");
+        items.add("Итог");
+        items.add("Не учитывать");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item , items);
+        spinner.setAdapter(adapter);
 
 
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
