@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tolichp.spirifoxy.altstu_personal_office.GroupSettingsFragment">
+    tools:context="com.tolichp.spirifoxy.altstu_personal_office.FillingDisciplineFragment">
 
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/content_groupsettings"  >
+        android:id="@+id/content_fillingdiscipline"  >
     </FrameLayout>
 </LinearLayout>

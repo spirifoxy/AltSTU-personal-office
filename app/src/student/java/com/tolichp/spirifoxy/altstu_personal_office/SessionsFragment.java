@@ -60,6 +60,14 @@ public class SessionsFragment extends Fragment {
                 feedItems = new ArrayList<>();
 
         String[] titlesList = getResources().getStringArray(R.array.semesters_titles);
+
+        //delete this shameful reverse later
+        for (int i = 0; i < titlesList.length / 2; i++) {
+            String temp = titlesList[i];
+            titlesList[i] = titlesList[titlesList.length - 1 - i];
+            titlesList[titlesList.length - 1 - i] = temp;
+        }
+
         listAdapter = new ViewPagerAdapter(getChildFragmentManager(), fragmentsList, titlesList);
         viewPager.setAdapter(listAdapter);
 

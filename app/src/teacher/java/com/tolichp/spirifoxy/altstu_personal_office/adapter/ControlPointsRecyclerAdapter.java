@@ -1,9 +1,7 @@
 package com.tolichp.spirifoxy.altstu_personal_office.adapter;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -69,7 +67,7 @@ public class ControlPointsRecyclerAdapter extends RecyclerView.Adapter<ControlPo
                     FragmentManager fm = ((FragmentActivity) context).getSupportFragmentManager();
                     FragmentTransaction transaction = fm.beginTransaction();
                     
-                    transaction.replace(R.id.content_groupsettings, fragment);
+                    transaction.replace(R.id.content_fillingdiscipline, fragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
                 }

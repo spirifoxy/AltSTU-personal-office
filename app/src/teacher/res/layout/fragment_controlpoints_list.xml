@@ -6,7 +6,7 @@
     tools:context="com.tolichp.spirifoxy.altstu_personal_office.ControlPointsListFragment">
 
     <Spinner
-        android:id="@+id/spinner_controlpointsstudentgroup"
+        android:id="@+id/spinner_controlpointsstudentdiscipline"
         android:layout_width="match_parent"
         android:layout_height="@dimen/string_height"/>
 

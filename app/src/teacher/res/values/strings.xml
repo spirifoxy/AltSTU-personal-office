@@ -7,7 +7,7 @@
     <string name="messages">Сообщения</string>
     <string name="attendance">Журнал посещений</string>
     <string name="attestation">Аттестация</string>
-    <string name="group_settings">Настройки групп</string>
+    <string name="filling_disciplines">Наполнение дисциплины</string>
     <string name="study">Успеваемость</string>
 
     <!-- Strings related to attendance -->

@@ -19,9 +19,9 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/attestation" />
         <item
-            android:id="@+id/nav_group_settings"
+            android:id="@+id/nav_filling_discipline"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/group_settings" />
+            android:title="@string/filling_disciplines" />
         <item
             android:id="@+id/nav_study"
             android:icon="@drawable/ic_menu_slideshow"

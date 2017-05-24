@@ -63,11 +63,11 @@ public class ControlPointsListFragment extends Fragment {
 
         }
 
-        Spinner groupSpinner = (Spinner) view.findViewById(R.id.spinner_controlpointsstudentgroup);
+        Spinner groupSpinner = (Spinner) view.findViewById(R.id.spinner_controlpointsstudentdiscipline);
         String[] groups = new String[]{
-                "Группа...",
-                "ПИ-31",
-                "ПИ-32",
+                "Дисциплина...",
+                "Компьютерная графика",
+                "Математический анализ",
         };
 
         ArrayAdapter<String> spinnerArrayAdapter;
