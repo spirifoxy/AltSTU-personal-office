@@ -15,6 +15,12 @@ import java.util.Calendar;
 public class DatePicker extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
+    public static DatePicker newInstance() { //int page) {
+        DatePicker datePicker = new DatePicker();
+
+        return datePicker;
+    }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 

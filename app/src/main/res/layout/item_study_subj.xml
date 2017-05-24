@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView_namesubj"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/string_height"
+                android:textSize="@dimen/text_medium1"
+                android:layout_weight="1"
+                android:text="Курсовая" />
+
+            <TextView
+                android:id="@+id/textView_n"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/string_height"
+                android:layout_weight="1.5"
+                android:textSize="@dimen/text_medium1"
+                android:text="№" />
+
+            <TextView
+                android:id="@+id/textView_numsubj"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/string_height"
+                android:layout_weight="1.4"
+                android:textSize="@dimen/text_medium1"
+                android:text="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_medium1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView_points"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/string_height"
+                android:layout_weight="1"
+                android:text="Баллы:"
+                android:textSize="@dimen/text_medium1" />
+
+            <EditText
+                android:id="@+id/editText_points"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/string_height"
+                android:layout_weight="3"
+                android:textSize="@dimen/text_medium1"
+                android:gravity="top"
+                android:paddingTop="0dp"
+                android:ems="14"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView_term"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/string_height"
+                android:layout_weight="2"
+                android:textSize="@dimen/text_medium1"
+                android:text="Срок:" />
+
+            <TextView
+                android:id="@+id/textView_termval"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/string_height"
+                android:layout_weight="1"
+                android:textSize="@dimen/text_medium1"
+                android:text="20.01" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView_passed"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/string_height"
+                android:layout_weight="2"
+                android:textSize="@dimen/text_medium1"
+                android:text="Сдано:" />
+
+            <TextView
+                android:id="@+id/textView_passedval"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/string_height"
+                android:layout_weight="1"
+                android:textSize="@dimen/text_medium1"
+                android:text="20.01" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

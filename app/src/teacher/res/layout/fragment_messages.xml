@@ -6,20 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.tolichp.spirifoxy.altstu_personal_office.TeacherMessages">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="242dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintHorizontal_bias="0.809"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp" />
 
     <TextView
         android:id="@+id/textView9"
@@ -28,11 +14,21 @@
         android:text="Студент"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="8dp"
-        app:layout_constraintRight_toLeftOf="@+id/spinner2"
-        android:layout_marginRight="8dp" />
+         />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="260dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
 
     <TextView
         android:id="@+id/textView10"
@@ -41,38 +37,31 @@
         android:text="Группа"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="8dp"
-        app:layout_constraintRight_toLeftOf="@+id/spinner"
-        android:layout_marginRight="8dp" />
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_width="244dp"
+        android:layout_width="260dp"
         android:layout_height="28dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintHorizontal_bias="0.807"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
-        android:layout_marginRight="8dp" />
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="349dp"
         android:layout_height="341dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Сообщение"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
         android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Сообщение"
+        android:inputType="textPersonName"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
     <Button
@@ -80,8 +69,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Отправить"
-        tools:layout_editor_absoluteX="139dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,8 +1,6 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,17 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.AttendanceSpinnerArrayAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.StudentsRecyclerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Student;
+import com.tolichp.spirifoxy.altstu_personal_office.utils.DatePicker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by spirifoxy on 21.05.2017.
@@ -31,6 +29,7 @@ import java.util.List;
 public class AttendanceFragment extends Fragment {
 
     StudentsRecyclerAdapter mStudentsRecyclerAdapter;
+    private DatePicker dateDialog;
 
     public static AttendanceFragment newInstance() {
         AttendanceFragment fragment = new AttendanceFragment();
@@ -43,13 +42,19 @@ public class AttendanceFragment extends Fragment {
         getActivity().setTitle(getResources().getString(R.string.attendance));
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_attendance, container, false);
         ArrayAdapter<String> spinnerArrayAdapter;
 
+        final Button buttonDate = (Button) view.findViewById(R.id.button_date);
+        buttonDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dateDialog = DatePicker.newInstance();//new DatePicker();
 
+            }
+        });
 
         Spinner disciplineSpinner = (Spinner) view.findViewById(R.id.spinner_discipline);
         String[] disciplines = new String[]{
@@ -115,7 +120,6 @@ public class AttendanceFragment extends Fragment {
         return view;
     }
 
-
     private AdapterView.OnItemSelectedListener mSpinnerItemSelectListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -135,6 +139,7 @@ public class AttendanceFragment extends Fragment {
 
         }
     };
+
 
 
 }
