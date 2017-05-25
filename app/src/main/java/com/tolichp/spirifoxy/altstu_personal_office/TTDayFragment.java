@@ -127,7 +127,8 @@ public class TTDayFragment extends Fragment {
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         MenuItem menuItem = menu.findItem(R.id.action_day_view);
-        menuItem.setChecked(true);
+        if (menuItem != null)
+            menuItem.setChecked(true);
     }
 
 
