@@ -1,10 +1,11 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.view.PagerTabStrip;
+import android.support.v4.view.PagerTitleStrip;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,23 +16,26 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.AttendanceSpinnerArrayAdapter;
-import com.tolichp.spirifoxy.altstu_personal_office.adapter.StudentsRecyclerAdapter;
-import com.tolichp.spirifoxy.altstu_personal_office.data.Student;
+import com.tolichp.spirifoxy.altstu_personal_office.adapter.ViewPagerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.utils.DatePicker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by spirifoxy on 21.05.2017.
+ * Created by spirifoxy on 25.05.2017.
  */
 
-public class AttendanceFragment extends Fragment {
+public class JournalFragment extends Fragment {
 
-    StudentsRecyclerAdapter mStudentsRecyclerAdapter;
+    private ViewPagerAdapter listAdapter;
 
-    public static AttendanceFragment newInstance() {
-        AttendanceFragment fragment = new AttendanceFragment();
+    private ViewPager viewPager;
+    private ArrayList<Fragment> fragmentsList;
+    private DatePicker dateDialog;
+
+    public static JournalFragment newInstance() {
+        JournalFragment fragment = new JournalFragment();
         return fragment;
     }
 
@@ -43,8 +47,37 @@ public class AttendanceFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_attendance, container, false);
-        /*ArrayAdapter<String> spinnerArrayAdapter;
+        View view = inflater.inflate(R.layout.fragment_journal, container, false);
+
+        viewPager = (ViewPager) view.findViewById(R.id.pager_journal);
+        fragmentsList = new ArrayList<>();
+
+
+        fragmentsList.add(new AttendanceFragment());
+        fragmentsList.add(new StudyFragment());
+
+
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tablayout_journal);
+        tabLayout.setupWithViewPager(viewPager);
+
+        //PagerTitleStrip pagerTabStrip = (PagerTitleStrip) view.findViewById(R.id.pager_header_journal);
+
+//        PagerTabStrip pagerTabStrip = (PagerTabStrip) view.findViewById(R.id.pager_header_journal);
+//        pagerTabStrip.setDrawFullUnderline(true);
+
+        String[] titlesList = getResources().getStringArray(R.array.journal_titles);
+//                { getResources().getString(R.string.attendance), getResources().getString(R.string.study) };
+
+
+        listAdapter = new ViewPagerAdapter(getChildFragmentManager(), fragmentsList, titlesList);
+        viewPager.setAdapter(listAdapter);
+
+
+
+
+
+
+        ArrayAdapter<String> spinnerArrayAdapter;
 
         final Button buttonDate = (Button) view.findViewById(R.id.button_date);
         buttonDate.setOnClickListener(new View.OnClickListener() {
@@ -93,34 +126,36 @@ public class AttendanceFragment extends Fragment {
         spinnerArrayAdapter = new AttendanceSpinnerArrayAdapter(getContext(), R.layout.item_spinner, groupsList);
         spinnerArrayAdapter.setDropDownViewResource(R.layout.item_spinner);
         groupSpinner.setAdapter(spinnerArrayAdapter);
-        groupSpinner.setOnItemSelectedListener(mSpinnerItemSelectListener);*/
+        groupSpinner.setOnItemSelectedListener(mSpinnerItemSelectListener);
 
 
 
-        ArrayList<Student> students = new ArrayList<>();
-        for (int i = 0; i< 20; i++) {
-            Student s = new Student();
-            s.name = "Name";
-            s.surname = "Surname";
-            students.add(s);
 
-        }
-
-        RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.view_recycler_students);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        //TODO какую-нибудь проверку на то, есть ли элементы в списке?
-        mStudentsRecyclerAdapter = new StudentsRecyclerAdapter(getActivity(), students); //ToDO прочитать про onAttach метод, реализовать его
-        mRecyclerView.setAdapter(mStudentsRecyclerAdapter);
 
 
 
         return view;
     }
 
+    private AdapterView.OnItemSelectedListener mSpinnerItemSelectListener = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            String selectedItemText = (String) parent.getItemAtPosition(position);
+            // If user change the default selection
+            // First item is disable and it is used for hint
+            if (position > 0) {
+                // Notify the selected item text
+                Toast.makeText
+                        (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }
 
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
 
+        }
+    };
 
 
 }

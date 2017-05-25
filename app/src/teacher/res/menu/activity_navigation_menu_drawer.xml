@@ -11,9 +11,13 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/messages" />
         <item
+            android:id="@+id/nav_journal"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/journal" />
+<!--        <item
             android:id="@+id/nav_attendance"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/attendance" />
+            android:title="@string/attendance" />-->
         <item
             android:id="@+id/nav_attestation_t"
             android:icon="@drawable/ic_menu_slideshow"
@@ -22,9 +26,9 @@
             android:id="@+id/nav_filling_discipline"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/filling_disciplines" />
-        <item
+        <!--<item
             android:id="@+id/nav_study"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/study" />
+            android:title="@string/study" />-->
     </group>
 </menu>

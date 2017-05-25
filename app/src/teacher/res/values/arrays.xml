@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="journal_titles">
+        <item>@string/attendance</item>
+        <item>@string/study</item>
+    </string-array>
+</resources>

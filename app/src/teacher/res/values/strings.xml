@@ -5,11 +5,11 @@
 
     <!-- Strings related to menu -->
     <string name="messages">Сообщения</string>
-    <string name="attendance">Журнал посещений</string>
+    <string name="journal">Журнал</string>
+    <string name="attendance">Посещаемость</string>
     <string name="attestation">Аттестация</string>
     <string name="filling_disciplines">Наполнение дисциплины</string>
     <string name="study">Успеваемость</string>
-
 
 
     <!-- Strings related to attendance -->
