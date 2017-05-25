@@ -10,6 +10,7 @@
     <string name="attestation">Аттестация</string>
     <string name="filling_disciplines">Наполнение дисциплины</string>
     <string name="study">Успеваемость</string>
+    <string name="groups">Группы</string>
 
 
     <!-- Strings related to attendance -->
@@ -20,6 +21,9 @@
     <string name="number_sign">№</string>
     <string name="full_name">ФИО</string>
     <string name="present">Присутс.</string>
+    <string name="oneday">25.05.</string>
+    <string name="yesterday">23.05</string>
+    <string name="yesteryesterday">18.05</string>
     <string name="absent">Отсутс.</string>
 
     <!--Strings related to attestation-->
