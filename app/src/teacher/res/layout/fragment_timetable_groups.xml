@@ -1,34 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.tolichp.spirifoxy.altstu_personal_office.TimetableFragment"
-    android:orientation="vertical">
-
-    <github.chenupt.springindicator.SpringIndicator
-        android:id="@+id/indicator"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/gray_light"
-        app:siIndicatorColor="@color/color_primary"
-        app:siIndicatorColors="@array/indicator_colors"
-        app:siSelectedTextColor="@color/white"
-        app:siTextColor="@color/black"
-        app:siTextSize="18sp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:orientation="vertical"
+    tools:context="com.tolichp.spirifoxy.altstu_personal_office.TimetableFragment">
 
     <Spinner
         android:id="@+id/spinner_groupTimetable"
         android:layout_width="match_parent"
-        android:layout_height="35dp" />
+        android:layout_height="wrap_content" />
 
-    <github.chenupt.springindicator.viewpager.ScrollerViewPager
-        android:id="@+id/view_pager_timetable"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginTop="0dp" />
+    <include
+        layout="@layout/fragment_timetable"/>
 </LinearLayout>
