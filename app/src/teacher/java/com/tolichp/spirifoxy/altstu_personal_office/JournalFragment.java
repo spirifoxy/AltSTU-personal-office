@@ -3,8 +3,6 @@ package com.tolichp.spirifoxy.altstu_personal_office;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerTabStrip;
-import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +52,7 @@ public class JournalFragment extends Fragment {
 
 
         fragmentsList.add(new AttendanceFragment());
-        fragmentsList.add(new StudyFragment());
+        fragmentsList.add(new MarksFragment());
 
 
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tablayout_journal);

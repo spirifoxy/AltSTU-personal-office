@@ -40,5 +40,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="string_height">50dp</dimen>
+    <dimen name="padding_name_in_mark">10dp</dimen>
+    <dimen name="padding_left_name_in_mark">8sp</dimen>
 
 </resources>
