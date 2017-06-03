@@ -7,7 +7,7 @@
     <EditText
         android:id="@+id/editText5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/string_height"
         android:layout_weight="1"
         android:ems="10"
         android:inputType="number" />
@@ -15,7 +15,7 @@
     <EditText
         android:id="@+id/editText4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/string_height"
         android:layout_weight="1"
         android:ems="10"
         android:inputType="number" />
@@ -23,7 +23,7 @@
     <EditText
         android:id="@+id/editText3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/string_height"
         android:layout_weight="1"
         android:ems="10"
         android:inputType="number" />
@@ -31,7 +31,7 @@
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/string_height"
         android:layout_weight="1"
         android:ems="10"
         android:inputType="number" />
