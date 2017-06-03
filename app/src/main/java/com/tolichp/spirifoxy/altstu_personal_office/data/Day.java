@@ -13,6 +13,9 @@ public class Day implements Parcelable {
     private String name;
     private ArrayList<Lesson> lessons;
 
+    public Day(){
+        lessons = new ArrayList<>();
+    }
 
     public Day(String name, int testNumber) {
         this.name = name;
