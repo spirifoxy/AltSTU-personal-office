@@ -91,7 +91,7 @@ public class AttestationTeacherFragment extends android.support.v4.app.Fragment 
 
             ArrayList<AttestatedStudent> students = new ArrayList<>();
             for (int i = 0; i < 20; i++) {
-                AttestatedStudent s = new AttestatedStudent("Ivanov Ivan", i, 0, 0, 0, 0);
+                AttestatedStudent s = new AttestatedStudent("Петров Пётр", i+1, 0, 0, 0, 0);
                 students.add(s);
             }
 

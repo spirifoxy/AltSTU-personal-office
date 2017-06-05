@@ -45,8 +45,8 @@ public class StudentsRecyclerAdapter extends RecyclerView.Adapter<StudentsRecycl
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Student student = studentsList.get(position);
-        holder.mTextViewStudentNumber.setText(position + "-");
-        holder.mTextViewStudentFullName.setText(student.name + " " + student.surname);
+        holder.mTextViewStudentNumber.setText(position+1 + " ");
+        holder.mTextViewStudentFullName.setText(student.surname + " " + student.name);
 
 
 

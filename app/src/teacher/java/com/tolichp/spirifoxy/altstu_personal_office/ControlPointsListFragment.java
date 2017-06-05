@@ -58,10 +58,11 @@ public class ControlPointsListFragment extends Fragment {
 
 
         controlPoints = new ArrayList<>();
-        for (int i = 0; i< 5; i++) {
-            controlPoints.add(new ControlPoint("test control point " + i ));
-
-        }
+        controlPoints.add(new ControlPoint("Контрольные работы"));
+//        for (int i = 0; i< 5; i++) {
+//            controlPoints.add(new ControlPoint("Контрольная работа " + i ));
+//
+//        }
 
         Spinner groupSpinner = (Spinner) view.findViewById(R.id.spinner_controlpointsstudentdiscipline);
         String[] groups = new String[]{

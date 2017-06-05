@@ -18,10 +18,10 @@
             android:id="@+id/nav_attendance"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/attendance" />-->
-        <item
-            android:id="@+id/nav_attestation_t"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/attestation" />
+        <!--<item-->
+            <!--android:id="@+id/nav_attestation_t"-->
+            <!--android:icon="@drawable/ic_menu_slideshow"-->
+            <!--android:title="@string/attestation" />-->
         <item
             android:id="@+id/nav_filling_discipline"
             android:icon="@drawable/ic_menu_slideshow"

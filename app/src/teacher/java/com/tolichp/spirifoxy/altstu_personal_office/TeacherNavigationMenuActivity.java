@@ -23,9 +23,9 @@ public class TeacherNavigationMenuActivity extends NavigationMenuActivity {
             case R.id.nav_journal:
                 fragment = JournalFragment.newInstance();
                 break;
-            case R.id.nav_attestation_t:
-                fragment = AttestationTeacherFragment.newInstance();
-                break;
+//            case R.id.nav_attestation_t:
+//                fragment = AttestationTeacherFragment.newInstance();
+//                break;
             case R.id.nav_filling_discipline:
                 fragment = FillingDisciplineFragment.newInstance();
                 break;

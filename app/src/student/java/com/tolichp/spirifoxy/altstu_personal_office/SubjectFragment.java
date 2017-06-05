@@ -173,7 +173,7 @@ public class SubjectFragment extends Fragment {
 
 
 
-        tvAnnotation.setText("Test test test test test test test test test test test test test test test test test test test test test test test test test test test test test ");
+        tvAnnotation.setText("Математическая дисциплина");
         tvIlias.setText("https://habrahabr.ru/post/270121/");
         tvIlias.setText(Util.fromHtml("<a href=\"" + "https://habrahabr.ru/post/270121/" + "\">" + "https://habrahabr.ru/post/270121/" + "</a> "));
 //        tvIlias.setText(Html.fromHtml("<a href=\"" + "https://habrahabr.ru/post/270121/" + "\">" + "https://habrahabr.ru/post/270121/" + "</a> "));

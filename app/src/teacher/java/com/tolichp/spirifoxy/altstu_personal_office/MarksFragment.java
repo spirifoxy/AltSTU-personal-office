@@ -55,7 +55,7 @@ public class MarksFragment extends android.support.v4.app.Fragment {
 
         studyingStudents = new ArrayList<>();
         for (int i = 0; i< 23; i++) {
-            studyingStudents.add(new StudyingStudent(i, "Ivanov Ivan"));
+            studyingStudents.add(new StudyingStudent(i, "Иванов Иван"));
         }
 
 

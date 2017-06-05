@@ -8,19 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.tolichp.spirifoxy.altstu_personal_office.adapter.AttendanceSpinnerArrayAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.StudentsRecyclerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Student;
-import com.tolichp.spirifoxy.altstu_personal_office.utils.DatePicker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by spirifoxy on 21.05.2017.
@@ -98,10 +90,10 @@ public class AttendanceFragment extends Fragment {
 
 
         ArrayList<Student> students = new ArrayList<>();
-        for (int i = 0; i< 20; i++) {
+        for (int i = 1; i< 20; i++) {
             Student s = new Student();
-            s.name = "Name";
-            s.surname = "Surname";
+            s.name = "Пётр";
+            s.surname = "Петров";
             students.add(s);
 
         }
