@@ -40,12 +40,12 @@ public class AttestationTeacherFragment extends android.support.v4.app.Fragment 
             String selectedItemText = (String) parent.getItemAtPosition(position);
             // If user change the default selection
             // First item is disable and it is used for hint
-            if (position > 0) {
+            /*if (position > 0) {
                 // Notify the selected item text
                 Toast.makeText
                         (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
                         .show();
-            }
+            }*/
         }
 
         @Override
@@ -91,7 +91,7 @@ public class AttestationTeacherFragment extends android.support.v4.app.Fragment 
 
             ArrayList<AttestatedStudent> students = new ArrayList<>();
             for (int i = 0; i < 20; i++) {
-                AttestatedStudent s = new AttestatedStudent("Ivanov Ivan", i, 0, 0, 0, 0);
+                AttestatedStudent s = new AttestatedStudent("Иванов Иван", i+1, 0, 0, 0, 0);
                 students.add(s);
             }
 

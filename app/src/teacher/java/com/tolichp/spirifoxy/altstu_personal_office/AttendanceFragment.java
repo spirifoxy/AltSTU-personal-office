@@ -100,8 +100,8 @@ public class AttendanceFragment extends Fragment {
         ArrayList<Student> students = new ArrayList<>();
         for (int i = 0; i< 20; i++) {
             Student s = new Student();
-            s.name = "Name";
-            s.surname = "Surname";
+            s.name = "Иван";
+            s.surname = "Иванов";
             students.add(s);
 
         }

@@ -352,17 +352,17 @@ public class TTWeekFragment extends Fragment //{
 
         @Override
         public void onEmptyViewLongPress(Calendar time) {
-            Toast.makeText(getContext(), "Empty view long pressed: " + getEventTitle(time), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "Empty view long pressed: " + getEventTitle(time), Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onEventClick(WeekViewEvent event, RectF eventRect) {
-            Toast.makeText(getContext(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
-            Toast.makeText(getContext(), "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
         }
 
 }

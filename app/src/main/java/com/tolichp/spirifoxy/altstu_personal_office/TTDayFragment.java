@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -39,6 +40,7 @@ public class TTDayFragment extends Fragment {
          // Required empty public constructor
      }*/
     static final String TAG = "myLogs";
+    static final String ARGUMENT_DAYS = "arg_days";
 
     private ScrollerViewPager viewPager;
 
@@ -46,21 +48,26 @@ public class TTDayFragment extends Fragment {
     private PagerAdapter pagerAdapter; //TODO убрать? мб сразу созданный объект слать куда там надо
     private Spinner mCountrySpinner;
 
+    private List<Day> days;
 
-    public static TTDayFragment newInstance() {//String param1, String param2) {
+    public static TTDayFragment newInstance(ArrayList<Day> days) {//String param1, String param2) {
         TTDayFragment fragment = new TTDayFragment();
 //        Bundle args = new Bundle();
 //        fragment.setArguments(args);
+        Bundle args = new Bundle();
+        args.putParcelableArrayList(ARGUMENT_DAYS, days);
+        fragment.setArguments(args);
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }*/
+        if (getArguments() != null) {
+            days = getArguments().getParcelableArrayList(ARGUMENT_DAYS);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
 //        getActivity().setTitle(getResources().getString(R.string.timetable));
         setHasOptionsMenu(true);
     }
@@ -92,7 +99,7 @@ public class TTDayFragment extends Fragment {
         //int currentWeekNumber = getCurrentWeekNumber();
 
         //инициализация дней
-        ArrayList<Day> days = null; // TODO not initialized
+        /*ArrayList<Day> days = null; // TODO not initialized
         //TODO test and debug
         if (null == days) {
             days = new ArrayList<>();
@@ -100,7 +107,7 @@ public class TTDayFragment extends Fragment {
             for (int i = 0; i < weekDays.length-1; i++) {
                 days.add(new Day(weekDays[i+1], i));
             }
-        }
+        }*/
 
         for (Day day : days) {
             TimetableDayFragment timetableFragment = TimetableDayFragment.newInstance(day);

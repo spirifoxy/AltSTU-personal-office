@@ -30,7 +30,7 @@
     <string name="thu">чт</string>
     <string name="fri">пт</string>
     <string name="sat">сб</string>
-    <string name="sun">вс</string>
+    <!--<string name="sun">вс</string>-->
 
     <string name="week_one">Неделя 1</string>
     <string name="week_two">Неделя 2</string>

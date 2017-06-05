@@ -20,17 +20,17 @@ public class Lesson implements Parcelable {
     private String info;
 
     public Lesson() {
-        startTime = Calendar.getInstance();
-        endTime = Calendar.getInstance();
+//        startTime = Calendar.getInstance();
+//        endTime = Calendar.getInstance();
         /*title = "";
         audience = "";
         classType = "";
         info = "";*/
 
-        title = "testtitle testtitle testtitle testtitle testtitletesttitle testtitle testtitle testtitle testtitle testtitle testtitletesttitle testtitletesttitletesttitle";
+        /*title = "testtitle testtitle testtitle testtitle testtitletesttitle testtitle testtitle testtitle testtitle testtitle testtitletesttitle testtitletesttitletesttitle";
         audience = "testaud";
         classType = "testclass";
-        info = "testinfo";
+        info = "testinfo";*/
 
     }
 

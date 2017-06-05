@@ -12,6 +12,7 @@ import com.tolichp.spirifoxy.altstu_personal_office.data.Lesson;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by spirifoxy on 11.05.2017.
@@ -24,11 +25,11 @@ public class TimetableRecyclerAdapter extends RecyclerView.Adapter<TimetableRecy
     public TimetableRecyclerAdapter(ArrayList<Lesson> lessonsList) {
         this.lessonsList = lessonsList;
 
-        // TODO ошибка - выше присваивается null
-        this.lessonsList = new ArrayList<>();
+        // T/*ODO ошибка - выше присваивается null*/
+        /*this.lessonsList = new ArrayList<>();
         this.lessonsList.add(new Lesson());
         this.lessonsList.add(new Lesson());
-        this.lessonsList.add(new Lesson());
+        this.lessonsList.add(new Lesson());*/
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -55,7 +56,9 @@ public class TimetableRecyclerAdapter extends RecyclerView.Adapter<TimetableRecy
     public void onBindViewHolder(TimetableRecyclerAdapter.ViewHolder holder, int position) {
         Lesson lesson = lessonsList.get(position);
 
-        SimpleDateFormat format = new SimpleDateFormat("h:mm");
+        Locale locale = new Locale("ru","RU");
+//        SimpleDateFormat format = new SimpleDateFormat("h:mm");
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm", locale);
         String startTime = format.format(lesson.getStartTime().getTime());
         String endTime = format.format(lesson.getEndTime().getTime());
 

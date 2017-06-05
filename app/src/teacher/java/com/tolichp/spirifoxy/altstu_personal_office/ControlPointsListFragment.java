@@ -58,8 +58,8 @@ public class ControlPointsListFragment extends Fragment {
 
 
         controlPoints = new ArrayList<>();
-        for (int i = 0; i< 5; i++) {
-            controlPoints.add(new ControlPoint("test control point " + i ));
+        for (int i = 0; i< 3; i++) {
+            controlPoints.add(new ControlPoint("Контрольные точки " + i ));
 
         }
 
@@ -90,12 +90,12 @@ public class ControlPointsListFragment extends Fragment {
             String selectedItemText = (String) parent.getItemAtPosition(position);
             // If user change the default selection
             // First item is disable and it is used for hint
-            if (position > 0) {
+            /*if (position > 0) {
                 // Notify the selected item text
                 Toast.makeText
                         (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
                         .show();
-            }
+            }*/
         }
 
         @Override
@@ -165,8 +165,8 @@ public class ControlPointsListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (selectedControlPointType == null) {
-                    Toast.makeText(getContext(), getResources().getString(R.string.select_control_point_error),
-                            Toast.LENGTH_LONG).show();
+                    /*Toast.makeText(getContext(), getResources().getString(R.string.select_control_point_error),
+                            Toast.LENGTH_LONG).show();*/
                     return;
                 }
 

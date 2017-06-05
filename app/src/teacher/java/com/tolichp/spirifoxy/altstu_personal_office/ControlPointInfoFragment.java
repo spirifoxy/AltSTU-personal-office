@@ -120,7 +120,7 @@ public class ControlPointInfoFragment extends Fragment {
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                Toast.makeText(getContext(), "testVC " + newVal, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "testVC " + newVal, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -130,10 +130,10 @@ public class ControlPointInfoFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getContext(), "testOC " + np.getValue(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "testOC " + np.getValue(), Toast.LENGTH_SHORT).show();
                 //tv.setText(String.valueOf(np.getValue()));
                 for (int i = 0; i < np.getValue(); i++) {
-                    controlPoints.add(new ControlPoint("Добавилось " + i));
+                    controlPoints.add(new ControlPoint("Точка " + i));
                 }
                 mControlPointsInfoAdapter.notifyDataSetChanged();
                 dialog.dismiss();

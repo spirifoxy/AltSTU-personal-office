@@ -17,7 +17,7 @@
         <item>@string/thu</item>
         <item>@string/fri</item>
         <item>@string/sat</item>
-        <item>@string/sun</item>
+        <!--<item>@string/sun</item>-->
     </string-array>
 
     <string-array name="week_numbers">

@@ -54,7 +54,7 @@ public class StudyingStudentsListFragment extends Fragment {
 
         ArrayList<StudyingStudent> subjects = new ArrayList<>();
         for (int i = 0; i< 13; i++) {
-            subjects.add(new StudyingStudent(i, "Ivanov " + i ));
+            subjects.add(new StudyingStudent(i+1, "Иванов " + (i+1) ));
         }
 
         Spinner groupSpinner = (Spinner) view.findViewById(R.id.spinner_studyingstudentgroup);
@@ -87,12 +87,12 @@ public class StudyingStudentsListFragment extends Fragment {
             String selectedItemText = (String) parent.getItemAtPosition(position);
             // If user change the default selection
             // First item is disable and it is used for hint
-            if (position > 0) {
+            /*if (position > 0) {
                 // Notify the selected item text
                 Toast.makeText
                         (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
                         .show();
-            }
+            }*/
         }
 
         @Override

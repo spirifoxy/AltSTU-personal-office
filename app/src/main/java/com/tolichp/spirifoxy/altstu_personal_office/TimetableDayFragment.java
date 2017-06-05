@@ -22,7 +22,7 @@ public class TimetableDayFragment extends Fragment {
 
 //    static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
     static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
-    static final String ARGUMENT_PAGE_NAME = "arg_page_name";
+    static final String ARGUMENT_DAY = "arg_page_name";
     static final String ARGUMENT_LESSONS = "arg_lessons";
 
     //int pageNumber;
@@ -33,14 +33,14 @@ public class TimetableDayFragment extends Fragment {
     private TimetableRecyclerAdapter mTimetableAdapter;
 
     //TODO rename?
-    private String pageName;
-    private ArrayList<Lesson> lessons;
+    private Day day;
+//    private ArrayList<Lesson> lessons;
 
 
 
 
 
-//    static TimetableDayFragment newInstance(String pageName, ArrayList<Lesson> lessons) { //int page) {
+//    static TimetableDayFragment newInstance(String day, ArrayList<Lesson> lessons) { //int page) {
     static TimetableDayFragment newInstance(Day day) { //int page) {
         TimetableDayFragment timeTableFragment = new TimetableDayFragment();
         Bundle arguments = new Bundle();
@@ -52,8 +52,8 @@ public class TimetableDayFragment extends Fragment {
 
 
 
-        arguments.putString(ARGUMENT_PAGE_NAME, day.getName());
-        arguments.putParcelableArrayList(ARGUMENT_LESSONS, day.getLessons());
+        arguments.putParcelable(ARGUMENT_DAY, day);
+//        arguments.putParcelableArrayList(ARGUMENT_LESSONS, day.getLessons());
         timeTableFragment.setArguments(arguments);
         return timeTableFragment;
     }
@@ -62,8 +62,8 @@ public class TimetableDayFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        pageNumber = getArguments().getInt(ARGUMENT_PAGE_NUMBER);
-        pageName = getArguments().getString(ARGUMENT_PAGE_NAME);
-        lessons = getArguments().getParcelableArrayList(ARGUMENT_LESSONS);
+        day = getArguments().getParcelable(ARGUMENT_DAY);
+//        lessons = getArguments().getParcelableArrayList(ARGUMENT_LESSONS);
 
         //Random rnd = new Random();
         //backColor = Color.argb(40, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
@@ -75,7 +75,7 @@ public class TimetableDayFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_timetable_day, container, false);
 
         /*TextView tvPage = (TextView) view.findViewById(R.id.textview_page);
-        tvPage.setText("Page " + pageName);//pageNumber);*/
+        tvPage.setText("Page " + day);//pageNumber);*/
         //tvPage.setBackgroundColor(backColor);
 
         return view;
@@ -90,7 +90,7 @@ public class TimetableDayFragment extends Fragment {
 
         //TODO какую-нибудь проверку на то, есть ли элементы в списке?
 
-        mTimetableAdapter = new TimetableRecyclerAdapter(lessons);
+        mTimetableAdapter = new TimetableRecyclerAdapter(day.getLessons());//lessons);
         mRecyclerView.setAdapter(mTimetableAdapter);
 
         mRecyclerView.setVisibility(View.VISIBLE);

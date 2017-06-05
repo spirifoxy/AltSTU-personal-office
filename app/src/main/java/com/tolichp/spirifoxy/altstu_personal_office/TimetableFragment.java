@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.Cache;
 import com.android.volley.Request;
@@ -23,9 +24,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.tolichp.spirifoxy.altstu_personal_office.app.AppController;
+import com.tolichp.spirifoxy.altstu_personal_office.controller.TimetableController;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Day;
+import com.tolichp.spirifoxy.altstu_personal_office.data.Lesson;
 import com.tolichp.spirifoxy.altstu_personal_office.data.StudyGroup;
 import com.tolichp.spirifoxy.altstu_personal_office.utils.DatePicker;
+import com.tolichp.spirifoxy.altstu_personal_office.utils.ServerCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,11 +40,17 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 import java.util.TimeZone;
 
 import github.chenupt.springindicator.viewpager.ScrollerViewPager;
@@ -59,8 +69,8 @@ public class TimetableFragment extends Fragment {
     private static final int TYPE_WEEK_VIEW = 2;
     private int mWeekViewType = TYPE_DAY_VIEW;
 
-    private String URL_DAYS = "http://altstu-server/web/api/v1/timetables/all";
-    private List<Day> days;
+//    private String URL_DAYS = "http://altstu-server/web/api/v1/timetables/all";
+    private ArrayList<Day> days;
     
     public static TimetableFragment newInstance() {//String param1, String param2) {
         TimetableFragment fragment = new TimetableFragment();
@@ -86,109 +96,50 @@ public class TimetableFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
         days = new ArrayList<>();
 
+
+
+
+        Locale locale = new Locale("ru","RU");
+//        TimeZone tz = TimeZone.getTimeZone("Asia/Barnaul");
+//        Calendar cal = GregorianCalendar.getInstance(tz, locale);
+        Date currentDate = new Date();
+//        cal.setTime(currentDate);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", locale);
+        String today = sdf.format(currentDate);
+
+
+
         // prepare the Request
-        DateFormat df = new SimpleDateFormat("y-m-d");
+        /*DateFormat df = new SimpleDateFormat("Y-m-d");
         Date today = Calendar.getInstance().getTime();
-        String reportDate = df.format(today);
+        String reportDate = df.format(today);*/
 
         StudyGroup newGroup = new StudyGroup();
-        String url = "/timetable/" + newGroup.getName1() + "/" + newGroup.getName2() + "/week/" +reportDate;
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>()
-                {
+
+        TimetableController controller = new TimetableController();
+        controller.getTwooWeeksTimetable(newGroup, today, getContext(), new ServerCallback() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        // display response
+                    public void onSuccess(JSONArray response) {
                         Log.d("Response", response.toString());
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("Error.Response","error");
-                    }
-                });
-        // We first check for cached request
-        Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_DAYS);
-        if (entry != null) {
-            // fetch the data from cache
-            try {
-                String data = new String(entry.data, "UTF-8");
-                try {
-                    parseJsonDays(new JSONObject(data));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
 
-        } else {
-            // making fresh volley request and getting json
-            JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
-                    URL_DAYS, null, new Response.Listener<JSONObject>() {
+                        parseJsonDays(response);
 
-                @Override
-                public void onResponse(JSONObject response) {
 
-                    // We first check for cached request
-                    Cache cache = AppController.getInstance().getRequestQueue().getCache();
-                    Cache.Entry entry = cache.get(URL_DAYS);
-                    if (entry != null) {
-                        // fetch the data from cache
-                        try {
-                            String data = new String(entry.data, "UTF-8");
-                            try {
-                                parseJsonDays(new JSONObject(data));
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
-                        }
+                        Fragment fragment = TTDayFragment.newInstance(days);
 
-                    } else {
-                        // making fresh volley request and getting json
-                        JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
-                                URL_DAYS, null, new Response.Listener<JSONObject>() {
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.content_timetable, fragment);
+                        transaction.commit();
 
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                VolleyLog.d(TAG, "Response: " + response.toString());
-                                if (response != null) {
-                                    parseJsonDays(response);
-                                }
-                            }
-                        }, new Response.ErrorListener() {
-
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                            }
-                        });
-                        // Adding request to volley request queue
-                        AppController.getInstance().addToRequestQueue(jsonReq);
                     }
                 }
-            }, new Response.ErrorListener() {
+        );
 
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    VolleyLog.d(TAG, "Error: " + error.getMessage());
-                }
-            });
-            // Adding request to volley request queue
-            AppController.getInstance().addToRequestQueue(jsonReq);
-        }
-
-        
-        Fragment fragment = TTDayFragment.newInstance();
+        /*Fragment fragment = TTDayFragment.newInstance(days);
 
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_timetable, fragment);
-        transaction.commit();
+        transaction.commit();*/
 
         return view;
     }
@@ -228,7 +179,7 @@ public class TimetableFragment extends Fragment {
                     item.setChecked(!item.isChecked());
                     mWeekViewType = TYPE_DAY_VIEW;
 
-                    Fragment fragment = TTDayFragment.newInstance();
+                    Fragment fragment = TTDayFragment.newInstance(days);
 
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.content_timetable, fragment);
@@ -255,12 +206,11 @@ public class TimetableFragment extends Fragment {
     }
 
 
-    private int getCurrentWeekNumber() {
+    private int getWeekNumber(Date date) {
         Locale locale = new Locale("ru","RU");
         TimeZone tz = TimeZone.getTimeZone("Asia/Barnaul");
         Calendar cal = GregorianCalendar.getInstance(tz, locale);
-        Date currentDate = new Date();
-        cal.setTime(currentDate);
+        cal.setTime(date);
 
         int week = cal.get(Calendar.WEEK_OF_YEAR);
         int year = cal.get(Calendar.YEAR);
@@ -276,7 +226,7 @@ public class TimetableFragment extends Fragment {
         }
 
         Calendar semBegin = GregorianCalendar.getInstance(tz, locale);
-        if (currentDate.after(firstSemDate) && currentDate.before(secondSemDate)) { //первый семестр
+        if (date.after(firstSemDate) && date.before(secondSemDate)) { //первый семестр
             semBegin.setTime(firstSemDate);
         } else {
             semBegin.setTime(secondSemDate);
@@ -284,33 +234,150 @@ public class TimetableFragment extends Fragment {
         return week - semBegin.get(Calendar.WEEK_OF_YEAR) + 1;
     }
 
-    /**
-     * Parsing json reponse and passing the data to days view list com.tolichp.spirifoxy.altstu_personal_office.adapter
-     * */
-    private void parseJsonDays(JSONObject response) {
+    private int getCurrentWeekNumber() {
+        return getWeekNumber(new Date());
+    }
+
+    private void parseJsonDays(JSONArray response) {
+        Locale locale = new Locale("ru","RU");
+        TimeZone tz = TimeZone.getTimeZone("Asia/Barnaul");
+//        Calendar cal = GregorianCalendar.getInstance(tz, locale);
+        Calendar cal = GregorianCalendar.getInstance(tz, locale);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", locale);
+        SimpleDateFormat sdfTime = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", locale);
+
+
+        Map<String,ArrayList<JSONObject>> hmDays = new HashMap<>();
+        List<String> dates = new ArrayList<>();
         try {
-            JSONArray feedArray = response.getJSONArray("days");
+//            Locale locale = new Locale("ru","RU");
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", locale);
 
-            for (int i = 0; i < feedArray.length(); i++) {
-                JSONObject daysObj = (JSONObject) feedArray.get(i);
 
-                Day item = new Day();
+            for (int i = 0; i < response.length(); i++) {
+                JSONObject lessonObject = response.getJSONObject(i);
+                String lessonDateString = lessonObject.getString("begindatetime").split("T")[0]; //отсекаем время
+                dates.add(lessonDateString);
 
-               /* item.setId(daysObj.getInt("id"));
-                item.setName(daysObj.getString("name"));
-
-                // days might be null sometimes
-                List<Day> days = daysObj.isNull("days") ? null : daysObj
-                        .getJSONArray("days");
-                item.setDays(days);*/
-
-                days.add(item);
+                ArrayList<JSONObject> lessons;
+                if(hmDays.containsKey(lessonDateString)){
+                    // if the key has already been used,
+                    // we'll just grab the array list and add the value to it
+                    lessons = hmDays.get(lessonDateString);
+                    lessons.add(lessonObject);
+                } else {
+                    // if the key hasn't been used yet,
+                    // we'll create a new ArrayList<String> object, add the value
+                    // and put it in the array list with the new key
+                    lessons = new ArrayList<>();
+                    lessons.add(lessonObject);
+                    hmDays.put(lessonDateString, lessons);
+                }
             }
+//          2017-06-05
+            String tetetet = "2017-06-05";
+            ArrayList day1 = hmDays.get(tetetet);
+//            Toast.makeText(getContext(), "test ", Toast.LENGTH_SHORT).show();
 
-            // notify data changes to list adapater
-            //listAdapter.notifyDataSetChanged();
         } catch (JSONException e) {
             e.printStackTrace();
         }
+//        Set<String> datesUnique = new HashSet<String>(dates).toArray(new String[0]);
+
+        Set<String> temp = new HashSet<String>(dates);
+        String[] uniqueDates = temp.toArray(new String[temp.size()]);
+
+
+        for (String date: uniqueDates) {
+            ArrayList<JSONObject> dayLessonObjects = hmDays.get(date);
+
+
+            Day day = new Day();
+
+
+
+            Date d = new Date();
+            try {
+                d = sdf.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+            cal.setTime(d);
+            int dayOfWeekNumber = cal.get(Calendar.DAY_OF_WEEK);
+
+            String[] weekNamesShort = getResources().getStringArray(R.array.week_days_short);
+            String dayOfWeekName = weekNamesShort[dayOfWeekNumber-1];
+
+
+            day.setDate(date);
+            day.setName(dayOfWeekName);
+
+            ArrayList<Lesson> lessons = new ArrayList<>();
+
+            for (JSONObject lessonObject: dayLessonObjects) {
+                try {
+                    Lesson lesson = new Lesson();
+                    JSONObject roomObj = lessonObject.getJSONObject("room");
+                    JSONObject buildingObj = roomObj.getJSONObject("building");
+
+                    String roomName = roomObj.getInt("number") + buildingObj.getString("name");
+
+                    String info = "";
+
+                    if (BuildConfig.FLAVOR.equals("student")) {
+                        JSONObject teacherObj = lessonObject.getJSONObject("teacher");
+                        info = teacherObj.getString("name") + " " + teacherObj.getString("patronymic") + " " + teacherObj.getString("surname"); //
+                    } else {
+                        JSONObject groupObj = lessonObject.getJSONObject("studygroup");
+                        info = groupObj.getString("name1") + "-" + groupObj.getString("name2");
+                    }
+
+                    JSONObject typeLessonObj = lessonObject.getJSONObject("typelesson");
+                    String typeLesson = typeLessonObj.getString("typeshort");
+
+                    String startTimeString = lessonObject.getString("begindatetime");//.split("T")[1]; //берем время
+//                    Calendar startTime = new GregorianCalendar();//TimeZone.getTimeZone(startTimeString));
+                    try {
+                        d = sdfTime.parse(startTimeString);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+//                    long ms = d.getTime();
+                    Calendar startCal = GregorianCalendar.getInstance(locale);
+//                    startCal.setTime(d);//setTimeInMillis(msStartTime);
+
+                    startCal.add(Calendar.MINUTE, 0);
+                    startCal.setTimeInMillis(d.getTime());
+                    lesson.setStartTime(startCal);
+
+                    Calendar endCal = GregorianCalendar.getInstance(locale);
+                    endCal.setTimeInMillis(d.getTime());
+                    endCal.add(Calendar.MINUTE, 90);
+                    lesson.setEndTime(endCal);
+
+
+
+                    lesson.setTitle("Математический анализ");
+                    lesson.setAudience(roomName);
+                    lesson.setClassType(typeLesson);
+                    lesson.setInfo(info);
+//                    lesson.setStartTime(cal);
+
+                    lessons.add(lesson);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            day.setLessons(lessons);
+            days.add(day);
+        }
+
+//        listAdapter.notifyDataSetChanged();
     }
 }
