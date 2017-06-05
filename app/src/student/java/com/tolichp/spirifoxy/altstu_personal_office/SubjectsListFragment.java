@@ -53,8 +53,8 @@ public class SubjectsListFragment extends Fragment {
 
 
         ArrayList<Subject> subjects = new ArrayList<>();
-        for (int i = 0; i< 13; i++) {
-            subjects.add(new Subject("test subject " + i ));
+        for (int i = 1; i< 13; i++) {
+            subjects.add(new Subject("Математический анализ " + i ));
 
         }
 
