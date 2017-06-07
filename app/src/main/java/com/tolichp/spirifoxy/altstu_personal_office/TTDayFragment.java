@@ -1,35 +1,22 @@
 package com.tolichp.spirifoxy.altstu_personal_office;
 
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.tolichp.spirifoxy.altstu_personal_office.adapter.ViewPagerAdapter;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Day;
-import com.tolichp.spirifoxy.altstu_personal_office.utils.DatePicker;
 
-import java.text.DateFormatSymbols;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
 
 import github.chenupt.springindicator.SpringIndicator;
 import github.chenupt.springindicator.viewpager.ScrollerViewPager;
@@ -49,8 +36,11 @@ public class TTDayFragment extends Fragment {
     private Spinner mCountrySpinner;
 
     private List<Day> days;
+    private static ArrayList<ArrayList<Day>> weeks;
+    static int currentWeekNumber;
 
-    public static TTDayFragment newInstance(ArrayList<Day> days) {//String param1, String param2) {
+
+    public static TTDayFragment newInstance(ArrayList<Day> days, ArrayList<ArrayList<Day>> _weeks, int _currentWeekNumber) {//String param1, String param2) {
         TTDayFragment fragment = new TTDayFragment();
 //        Bundle args = new Bundle();
 //        fragment.setArguments(args);
@@ -58,6 +48,8 @@ public class TTDayFragment extends Fragment {
         args.putParcelableArrayList(ARGUMENT_DAYS, days);
         fragment.setArguments(args);
 
+        weeks=_weeks;
+        currentWeekNumber = _currentWeekNumber;
         return fragment;
     }
 
@@ -109,7 +101,7 @@ public class TTDayFragment extends Fragment {
             }
         }*/
 
-        for (Day day : days) {
+        for (Day day : weeks.get(currentWeekNumber%2)) {
             TimetableDayFragment timetableFragment = TimetableDayFragment.newInstance(day);
             fragmentsList.add(timetableFragment);
         }

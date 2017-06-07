@@ -15,15 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.android.volley.Cache;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.tolichp.spirifoxy.altstu_personal_office.app.AppController;
 import com.tolichp.spirifoxy.altstu_personal_office.controller.TimetableController;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Day;
 import com.tolichp.spirifoxy.altstu_personal_office.data.Lesson;
@@ -35,22 +27,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.TimeZone;
 
 import github.chenupt.springindicator.viewpager.ScrollerViewPager;
@@ -69,23 +55,20 @@ public class TimetableFragment extends Fragment {
     private static final int TYPE_WEEK_VIEW = 2;
     private int mWeekViewType = TYPE_DAY_VIEW;
 
-//    private String URL_DAYS = "http://altstu-server/web/api/v1/timetables/all";
     private ArrayList<Day> days;
+
+    //Privorotskij
+    private ArrayList<ArrayList<Day>> weeks;
+    int currentWeekNumber;
     
     public static TimetableFragment newInstance() {//String param1, String param2) {
         TimetableFragment fragment = new TimetableFragment();
-//        Bundle args = new Bundle();
-//        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }*/
         getActivity().setTitle(getResources().getString(R.string.timetable));
         setHasOptionsMenu(true);
     }
@@ -94,38 +77,53 @@ public class TimetableFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
+
+        //Privorotskij
+        //Массив с двумя неделями, заполнен по 6 дней каждая
+        weeks = new ArrayList<>();
+        weeks.add(new ArrayList<Day>());
+        weeks.add(new ArrayList<Day>());
+        for(int i = 0; i < 6; i++) weeks.get(0).add(new Day());
+        for(int i = 0; i < 6; i++) weeks.get(1).add(new Day());
+        currentWeekNumber = getCurrentWeekNumber();
+
+        //TODO: отобразить в селекторе недели нужную неделю
+
+
+        //Заполняем массив недель
+        //(сначала первую, потом вторую неделю-строку) датами
+        ArrayList<String> datesOfWeek= new ArrayList<>();
+
+        datesOfWeek = getDatesOfCurrentWeek();
+        for(int i = 0; i < 6; i++)
+            weeks.get(currentWeekNumber%2).
+                    get(i).setDate(
+                            datesOfWeek.get(i));
+
+        datesOfWeek = getDatesOfNextWeek();
+        for(int i = 0; i < 6; i++)
+            weeks.get((currentWeekNumber+1)%2).
+                    get(i).setDate(
+                    datesOfWeek.get(i));
+
         days = new ArrayList<>();
 
-
-
-
         Locale locale = new Locale("ru","RU");
-//        TimeZone tz = TimeZone.getTimeZone("Asia/Barnaul");
-//        Calendar cal = GregorianCalendar.getInstance(tz, locale);
         Date currentDate = new Date();
-//        cal.setTime(currentDate);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", locale);
-        String today = sdf.format(currentDate);
-
-
-
-        // prepare the Request
-        /*DateFormat df = new SimpleDateFormat("Y-m-d");
-        Date today = Calendar.getInstance().getTime();
-        String reportDate = df.format(today);*/
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
+        String today = dateFormat.format(currentDate);
 
         StudyGroup newGroup = new StudyGroup();
 
         TimetableController controller = new TimetableController();
-        controller.getTwooWeeksTimetable(newGroup, today, getContext(), new ServerCallback() {
+        controller.getTwoWeeksTimetable(newGroup, today, new ServerCallback() {
                     @Override
                     public void onSuccess(JSONArray response) {
                         Log.d("Response", response.toString());
 
                         parseJsonDays(response);
 
-
-                        Fragment fragment = TTDayFragment.newInstance(days);
+                        Fragment fragment = TTDayFragment.newInstance(days,weeks, currentWeekNumber);
 
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.content_timetable, fragment);
@@ -134,13 +132,6 @@ public class TimetableFragment extends Fragment {
                     }
                 }
         );
-
-        /*Fragment fragment = TTDayFragment.newInstance(days);
-
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_timetable, fragment);
-        transaction.commit();*/
-
         return view;
     }
 
@@ -179,7 +170,7 @@ public class TimetableFragment extends Fragment {
                     item.setChecked(!item.isChecked());
                     mWeekViewType = TYPE_DAY_VIEW;
 
-                    Fragment fragment = TTDayFragment.newInstance(days);
+                    Fragment fragment = TTDayFragment.newInstance(days,weeks, currentWeekNumber);
 
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.content_timetable, fragment);
@@ -240,21 +231,17 @@ public class TimetableFragment extends Fragment {
 
     private void parseJsonDays(JSONArray response) {
         Locale locale = new Locale("ru","RU");
-        TimeZone tz = TimeZone.getTimeZone("Asia/Barnaul");
-//        Calendar cal = GregorianCalendar.getInstance(tz, locale);
-        Calendar cal = GregorianCalendar.getInstance(tz, locale);
+        TimeZone timeZone = TimeZone.getTimeZone("Asia/Barnaul");
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", locale);
-        SimpleDateFormat sdfTime = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", locale);
+        Calendar calendar = GregorianCalendar.getInstance(timeZone, locale);
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
+        SimpleDateFormat dateFormatTime = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", locale);
 
+        //в хэш-мап складываются занятия по ключу даты
         Map<String,ArrayList<JSONObject>> hmDays = new HashMap<>();
         List<String> dates = new ArrayList<>();
         try {
-//            Locale locale = new Locale("ru","RU");
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", locale);
-
-
             for (int i = 0; i < response.length(); i++) {
                 JSONObject lessonObject = response.getJSONObject(i);
                 String lessonDateString = lessonObject.getString("begindatetime").split("T")[0]; //отсекаем время
@@ -275,109 +262,215 @@ public class TimetableFragment extends Fragment {
                     hmDays.put(lessonDateString, lessons);
                 }
             }
-//          2017-06-05
-            String tetetet = "2017-06-05";
-            ArrayList day1 = hmDays.get(tetetet);
-//            Toast.makeText(getContext(), "test ", Toast.LENGTH_SHORT).show();
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-//        Set<String> datesUnique = new HashSet<String>(dates).toArray(new String[0]);
 
-        Set<String> temp = new HashSet<String>(dates);
-        String[] uniqueDates = temp.toArray(new String[temp.size()]);
-
-
-        for (String date: uniqueDates) {
-            ArrayList<JSONObject> dayLessonObjects = hmDays.get(date);
-
-
-            Day day = new Day();
-
-
-
-            Date d = new Date();
-            try {
-                d = sdf.parse(date);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-
-            cal.setTime(d);
-            int dayOfWeekNumber = cal.get(Calendar.DAY_OF_WEEK);
-
-            String[] weekNamesShort = getResources().getStringArray(R.array.week_days_short);
-            String dayOfWeekName = weekNamesShort[dayOfWeekNumber-1];
-
-
-            day.setDate(date);
-            day.setName(dayOfWeekName);
-
-            ArrayList<Lesson> lessons = new ArrayList<>();
-
-            for (JSONObject lessonObject: dayLessonObjects) {
+        //складываем в weeks пары, извлекая их по ключу из хэшмапа
+        for(int i=0; i < weeks.size(); i++ )
+            for (int j = 0; j < weeks.get(i).size(); j++)
+            {
                 try {
-                    Lesson lesson = new Lesson();
-                    JSONObject roomObj = lessonObject.getJSONObject("room");
-                    JSONObject buildingObj = roomObj.getJSONObject("building");
 
-                    String roomName = roomObj.getInt("number") + buildingObj.getString("name");
 
-                    String info = "";
+                    //если есть пары с такой датой
+                    if (hmDays.containsKey(weeks.get(i).get(j).getDate())) {
+                        //то будем собирать объект lesson и добавлять к нужному дню
+                        ArrayList<JSONObject> lessons;
+                        lessons = hmDays.get(weeks.get(i).get(j).getDate());
 
-                    if (BuildConfig.FLAVOR.equals("student")) {
-                        JSONObject teacherObj = lessonObject.getJSONObject("teacher");
-                        info = teacherObj.getString("name") + " " + teacherObj.getString("patronymic") + " " + teacherObj.getString("surname"); //
-                    } else {
-                        JSONObject groupObj = lessonObject.getJSONObject("studygroup");
-                        info = groupObj.getString("name1") + "-" + groupObj.getString("name2");
+                        //вытащили пары из хэшмапа, теперь каждую нужно положить в нужный day
+                        for (int k = 0; k < lessons.size(); k++) {
+                            Lesson lessonToAdd = new Lesson();
+                            JSONObject lessonObject = lessons.get(k);
+                            JSONObject roomObj = lessonObject.getJSONObject("room");
+                            JSONObject buildingObj = roomObj.getJSONObject("building");
+
+                            String roomName = roomObj.getInt("number") + buildingObj.getString("name");
+
+                            String info = "";
+
+                            if (BuildConfig.FLAVOR.equals("student")) {
+                                JSONObject teacherObj = lessonObject.getJSONObject("teacher");
+                                info = teacherObj.getString("name") + " " + teacherObj.getString("patronymic") + " " + teacherObj.getString("surname"); //
+                            } else {
+                                JSONObject groupObj = lessonObject.getJSONObject("studygroup");
+                                info = groupObj.getString("name1") + "-" + groupObj.getString("name2");
+                            }
+
+                            JSONObject typeLessonObj = lessonObject.getJSONObject("typelesson");
+                            String typeLesson = typeLessonObj.getString("typeshort");
+
+                            String startTimeString = lessonObject.getString("begindatetime");//.split("T")[1]; //берем время
+                            Date d = null;
+                            try {
+                                d = dateFormatTime.parse(startTimeString);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            Calendar startCal = GregorianCalendar.getInstance(locale);
+
+                            startCal.add(Calendar.MINUTE, 0);
+                            startCal.setTimeInMillis(d.getTime());
+                            lessonToAdd.setStartTime(startCal);
+
+                            Calendar endCal = GregorianCalendar.getInstance(locale);
+                            endCal.setTimeInMillis(d.getTime());
+                            endCal.add(Calendar.MINUTE, 90);
+                            lessonToAdd.setEndTime(endCal);
+
+                            //TODO: ссделать нормальное имя дисциплины
+                            lessonToAdd.setTitle("Математический анализ");
+                            lessonToAdd.setAudience(roomName);
+                            lessonToAdd.setClassType(typeLesson);
+                            lessonToAdd.setInfo(info);
+
+                            weeks.get(i).get(j).addLesson(lessonToAdd);
+                        }
                     }
+                }
+                catch (JSONException e)
+                {
 
-                    JSONObject typeLessonObj = lessonObject.getJSONObject("typelesson");
-                    String typeLesson = typeLessonObj.getString("typeshort");
-
-                    String startTimeString = lessonObject.getString("begindatetime");//.split("T")[1]; //берем время
-//                    Calendar startTime = new GregorianCalendar();//TimeZone.getTimeZone(startTimeString));
-                    try {
-                        d = sdfTime.parse(startTimeString);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-//                    long ms = d.getTime();
-                    Calendar startCal = GregorianCalendar.getInstance(locale);
-//                    startCal.setTime(d);//setTimeInMillis(msStartTime);
-
-                    startCal.add(Calendar.MINUTE, 0);
-                    startCal.setTimeInMillis(d.getTime());
-                    lesson.setStartTime(startCal);
-
-                    Calendar endCal = GregorianCalendar.getInstance(locale);
-                    endCal.setTimeInMillis(d.getTime());
-                    endCal.add(Calendar.MINUTE, 90);
-                    lesson.setEndTime(endCal);
-
-
-
-                    lesson.setTitle("Математический анализ");
-                    lesson.setAudience(roomName);
-                    lesson.setClassType(typeLesson);
-                    lesson.setInfo(info);
-//                    lesson.setStartTime(cal);
-
-                    lessons.add(lesson);
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
                 }
             }
 
-            day.setLessons(lessons);
-            days.add(day);
-        }
+
+//        Set<String> temp = new HashSet<>(dates);
+//        String[] uniqueDates = temp.toArray(new String[temp.size()]);
+
+
+
+        //сортировка дней по датам. это не помогает, т.к.
+        //если в какой-то день нет пар, то он схлопывается в массиве дней
+//        Collections.sort(dates, new Comparator<String>() {
+//            public int compare(String o1, String o2) {
+//                return o1.compareTo(o2);
+//            }
+//        });
+
+//        for (String date: uniqueDates) {
+//            ArrayList<JSONObject> dayLessonObjects = hmDays.get(date);
+//
+//            Day day = new Day();
+//
+//            Date d = new Date();
+//            try {
+//                d = dateFormat.parse(date);
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//
+//            calendar.setTime(d);
+//            int dayOfWeekNumber = calendar.get(Calendar.DAY_OF_WEEK);
+
+            /*Calendar is American, so it's neccessary to substract 2, bugfix, bad*/
+//
+//            String[] weekNamesShort = getResources().getStringArray(R.array.week_days_short);
+//
+//            //TODO: добавить трай/кэтч на воскресенье (dayOfWeek==1)
+//            String dayOfWeekName = weekNamesShort[dayOfWeekNumber-2];
+//
+//            day.setDate(date);
+//
+//            day.setName(dayOfWeekName);
+//
+//            ArrayList<Lesson> lessons = new ArrayList<>();
+//
+//            for (JSONObject lessonObject: dayLessonObjects) {
+//                try {
+//                    Lesson lesson = new Lesson();
+//                    JSONObject roomObj = lessonObject.getJSONObject("room");
+//                    JSONObject buildingObj = roomObj.getJSONObject("building");
+//
+//                    String roomName = roomObj.getInt("number") + buildingObj.getString("name");
+//
+//                    String info = "";
+//
+//                    if (BuildConfig.FLAVOR.equals("student")) {
+//                        JSONObject teacherObj = lessonObject.getJSONObject("teacher");
+//                        info = teacherObj.getString("name") + " " + teacherObj.getString("patronymic") + " " + teacherObj.getString("surname"); //
+//                    } else {
+//                        JSONObject groupObj = lessonObject.getJSONObject("studygroup");
+//                        info = groupObj.getString("name1") + "-" + groupObj.getString("name2");
+//                    }
+//
+//                    JSONObject typeLessonObj = lessonObject.getJSONObject("typelesson");
+//                    String typeLesson = typeLessonObj.getString("typeshort");
+//
+//                    String startTimeString = lessonObject.getString("begindatetime");//.split("T")[1]; //берем время
+//                    try {
+//                        d = dateFormatTime.parse(startTimeString);
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Calendar startCal = GregorianCalendar.getInstance(locale);
+//
+//                    startCal.add(Calendar.MINUTE, 0);
+//                    startCal.setTimeInMillis(d.getTime());
+//                    lesson.setStartTime(startCal);
+//
+//                    Calendar endCal = GregorianCalendar.getInstance(locale);
+//                    endCal.setTimeInMillis(d.getTime());
+//                    endCal.add(Calendar.MINUTE, 90);
+//                    lesson.setEndTime(endCal);
+//
+//                    lesson.setTitle("Математический анализ");
+//                    lesson.setAudience(roomName);
+//                    lesson.setClassType(typeLesson);
+//                    lesson.setInfo(info);
+//
+//                    lessons.add(lesson);
+//
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+////            }
+//
+//            day.setLessons(lessons);
+//            days.add(day);
+//        }
 
 //        listAdapter.notifyDataSetChanged();
+    }
+
+    public ArrayList<String> getDatesOfWeek(Date date) {
+        ArrayList<String> answerDates = new ArrayList<>();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date); // Устанавливаем текущее время
+
+        //Далее в методе дата устанавливается на понедельник текущей недели
+        //В календаре воскресенье - 1 день недели
+        //Если мы хотим при установке даты на понедельник остаться на текущей неделе
+        //Сбросим дату на субботу
+        //TODO: проверить, как ведёт себя в месяце, в котором первое число воскресенье
+        int today = calendar.get(Calendar.DAY_OF_WEEK);
+        if(today == 1) calendar.add(Calendar.DAY_OF_YEAR, -1);
+
+        Locale locale = new Locale("ru","RU");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
+
+        //Устанавливаем понедельник на календаре, будто сейчас понедельник
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        for (int i = 0; i < 6; i++) {
+            answerDates.add(dateFormat.format(calendar.getTime()));
+            calendar.add(Calendar.DAY_OF_WEEK, 1); //Прибавляем сутки
+        }
+
+        return answerDates;
+    }
+
+    public ArrayList<String> getDatesOfCurrentWeek() {
+        return getDatesOfWeek(new Date());
+    }
+
+    public ArrayList<String> getDatesOfNextWeek() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date()); // Устанавливаем текущее время
+        calendar.add(Calendar.DAY_OF_YEAR,7);
+        return getDatesOfWeek(calendar.getTime());
     }
 }

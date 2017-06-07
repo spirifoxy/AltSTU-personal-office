@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by spirifoxy on 11.05.2017.
@@ -28,10 +27,7 @@ public class Day implements Parcelable {
     }
 
    /* public static Creator<Day> getCREATOR() {
-        return CREATOR;
-    }*/
-
-
+        return CREATOR;  }*/
 
     public Day(){
         lessons = new ArrayList<>();
@@ -73,6 +69,11 @@ public class Day implements Parcelable {
 
     public ArrayList<Lesson> getLessons() {
         return lessons;
+    }
+
+    public void addLesson(Lesson newLesson)
+    {
+        lessons.add(newLesson);
     }
 
     @Override
